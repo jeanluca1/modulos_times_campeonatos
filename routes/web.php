@@ -20,6 +20,9 @@ Route::get('/', 'App\Http\Controllers\PaginaInicial@index')->name("PaginaInicial
 Route::get('/cadastrar', 'App\Http\Controllers\CadastroUsuarioController@cadastrar')
     ->name("usuario.cadastrar");
 
+Route::post('/usuario/salvar', 'App\Http\Controllers\Auth\RegisterController@create')
+    ->name("usuario.salvar");
+
 Route::put('/usuario/editar', 'App\Http\Controllers\CadastroUsuarioController@update')
     ->name("usuario.editar");
 
