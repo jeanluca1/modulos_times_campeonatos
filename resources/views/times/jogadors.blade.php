@@ -72,6 +72,7 @@
 				id="inData"
 				value="{{$jogador[0]['nacimento'] ?? ''}}"
 				placeholder="DD/MM/AAAA"
+				max="9999-12-31"
 				required
 			>
 		</div>
