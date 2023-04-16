@@ -25,7 +25,12 @@ class TimeController extends Controller
     public function index()
     {
         $modelTime = new time();
-        $times = $modelTime->lstTimesPorIdUsuario(Auth::user()->id);
+
+        if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminGeral'])) {
+            $times = $modelTime->sltTimes();
+        } else {
+            $times = $modelTime->lstTimesPorIdUsuario(Auth::user()->id);
+        }
         //dd($times);
         return view('times/index', compact('times'));
     }
