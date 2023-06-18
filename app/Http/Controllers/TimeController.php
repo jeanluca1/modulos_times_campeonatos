@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\time;
+use App\Models\local;
 use App\Http\Requests\TimeRequest;
 use App\Models\joga_em;
 use App\Models\jogador;
+use App\Models\arbritos;
 use Auth;
 
 class TimeController extends Controller
@@ -19,7 +21,7 @@ class TimeController extends Controller
     {
         $this->objTime = new time();
         $this->middleware('auth');
-        $this->middleware(['role:AdminTime|AdminGeral']);
+       // $this->middleware(['role:AdminTime|AdminGeral']);
         
     }
     public function index()
@@ -119,6 +121,31 @@ class TimeController extends Controller
         }
         return redirect()->route('time.gerenciar', ['idTime' => $idTime]);
     }
+    
+    public function criaramistoso($idTime)
+    {  
+        
+        $modelTime=new time();
+        $times=$modelTime->sltTimes();
+        $modelLocal = new local();
+        $locais= $modelLocal->lstLocais(true);
+        $idCampeonato=0;
+        $formato=null;
+        $grupo=null; 
+        $modelArbrito = new arbritos();
+        $arbritos = $modelArbrito->lstArbritos(0);
+
+
+        return view(
+            'campeonatos.criaPartidas',
+            compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos' ,'idTime')
+        );
+
+    }
+    public function show(){
+        
+    }
+
 
     public function removeJogador($idTime, $id)
     {
@@ -127,4 +154,7 @@ class TimeController extends Controller
 
         return redirect()->route('time.gerenciar', ['idTime' => $idTime]);
     }
+
+
+
 }

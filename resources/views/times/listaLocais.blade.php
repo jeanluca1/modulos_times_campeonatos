@@ -8,7 +8,7 @@
 	<div class="text-left mt-3 mb-4" >
         <div class="text-center col-8 m-auto">
             <a href="{{ route('local.cadastrarLocal') }}">
-                <button class="btn btn-success">Novo Local</button>
+                <button class="btn btn-success">Cadastrar Novo Local</button>
             </a>
         </div>
 

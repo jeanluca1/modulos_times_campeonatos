@@ -5,6 +5,7 @@
 <title>Meu Perfil</title>
 </head>
 <body>
+	
 	@if(isset($errors) && count($errors)>0)
 	<div class="class= text-danger text-center mt-4 mb-4 p-2 ">
 		@foreach($errors->all() as $erro)
@@ -19,13 +20,19 @@
 	</div>
 	@endif
 	
+	
+	<div input-group class="card col-9 m-auto"  >
 	<div class="text-left mt-3 mb-4">
+	
+	
 		@if(!empty($usuario))
 			<form class="row g-7" name="formEdit" id="formEdit" method="post" action="{{url("usuario/$usuario->id")}}">
+			<div class="card-header text-left">{{ __('Atualizar Usuario') }}</div>
 		@method('PUT')
 
 		@else
 			<form class="row g-7" name="formCadastro" id="formCadastro" method="post" action="{{url('usuario')}}">
+			<div class="card-header text-left">{{ __('Cadastrar Usuario') }}</div>
 		@endif
 
 			@csrf
@@ -91,8 +98,9 @@
 					</p>
 				<?php endif; ?>
 
-				<div class="btn-size-160">
-					<button type="submit" class="btn btn-primary">Salvar</button>
+				
+				<div class="btn-size-120">
+					<button type="submit" class="btn btn-primary ">Salvar</button>
 				</div>
 			</form>
 
@@ -103,5 +111,6 @@
 						<button type="submit" class="btn btn-danger">Sair</button>
 					</div>
 				</form>
+				</div>
 			@endif
 	@endsection

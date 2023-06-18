@@ -50,7 +50,7 @@
         
         <div class="text-center mt-3 mb-4">
             <a href="{{route('jogador.cadastrar')}}">
-                <button class="btn btn-success">Adicionar</button>
+                <button class="btn btn-outline-primary">Cadastrar Novo Jogador</button>
             </a>
         </div>
         @if (isset($arrayJogadores))

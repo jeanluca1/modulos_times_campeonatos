@@ -13,11 +13,13 @@
 		</div>
 	@endif
 	<div class="text-left mt-3 mb-4" >
+	<div input-group class="card col-8 m-auto" >
+	<div class="card-header text-left">{{ __('Cadastrar Local') }}</div>
 		<div class="col-8 m-auto">
 			@if(isset($id))
 			<form class="row g-3"  method="put"  action="{{ route("local.edita", ['id' => $id]) }}">
 			@else
-				<form class="row g-3"  method="post"  action="{{route("local.salva")}}"  >
+				<form class="row g-2"  method="post"  action="{{route("local.salva")}}"  >
 			@endif
 
 			@csrf
@@ -27,7 +29,7 @@
 					class="text45Left form-control"
 					id="inNome"
 					name='inNome'
-					placeholder="Nome"
+					placeholder="Nome:"
 					value="{{$local[0]['nome'] ?? ''}}"
 					required
 				>
@@ -48,7 +50,7 @@
 					class="text45Left form-control"
 					id="inEndereco"
 					name="inEndereco"
-					placeholder="Rua:.."
+					placeholder="Logradouro: "
 					value="{{$local[0]['endereco'] ?? ''}}"
 					required
 				>
@@ -59,6 +61,7 @@
 					class="text45Left form-control"
 					id="inNumero"
 					name="inNumero"
+					placeholder="N°:"
 					value="{{$local[0]['numero'] ?? ''}}"
 					required
 				>
@@ -69,6 +72,7 @@
 					class="text45Left form-control"
 					id="inBairro"
 					name="inBairro"
+					placeholder="Cidade: "
 					value="{{$local[0]['bairro'] ?? ''}}"
 					required
 				>
@@ -89,6 +93,7 @@
 					class="text45Left form-control"
 					id="inCidade"
 					name="inCidade"
+					placeholder="Cidade: "
 					value="{{$local[0]['cidade'] ?? ''}}"
 					required
 					>
@@ -101,19 +106,23 @@
 						? ($local[0]['estado'] == 'MG' ? 'selected' : '')
 						: ''}}
 					>MG</option>
-					<option value = 'ES'
+					<!--<option value = 'ES'
 						{{isset($local[0]['estado'])
 						? ($local[0]['estado'] == 'ES' ? 'selected' : '')
 						: ''}}
-					>ES</option>
+					>ES</option>-->
 					required
 				</select>
 
 
 			<div input-group>
-				<button type="submit" class="btn btn-primary">Salvar</button>
-				<button class="btn btn-danger">Cancelar</button>
+				<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button> 
+
+				<button class="btn btn-danger col-12 btn-size-120">Cancelar</button>
+						</div>
+						
 			</div>
 		</form>
 	</div>
+	<br>
 @endsection

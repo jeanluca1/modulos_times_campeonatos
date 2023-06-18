@@ -17,7 +17,7 @@
 
     <div class="text-center col-8 m-auto">
         <a href="{{ route('arbrito.cadastrar') }}">
-            <button class="btn btn-success">Cadastrar Novo</button>
+            <button class="btn btn-outline-success">Cadastrar Novo Arbrito </button>
         </a>
     </div>
 

@@ -690,9 +690,9 @@ class CampeonatosController extends Controller
     }
 
     public function salvaPartida(PartidasRequest $request)
-    {
+    { //dd($request['hdIdCampeonato']);
         
-        $idCampeonato = $request['hdIdCampeonato'];
+        $idCampeonato = $request['hdIdCampeonato'] ==0?null:$request['hdIdCampeonato'];
         $grupo = $request->hdGrupo;
         $dados['slTimeCasa'] = $request['slTimeCasa'];
         $dados['slTimeVizitante'] = $request['slTimeVizitante'];

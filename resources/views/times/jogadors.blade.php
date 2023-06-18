@@ -19,9 +19,12 @@
 		@csrf
 
 	<!-- <form class="row g-3 conterner"  method="post"  action="{{url('cadastrojogador')}}"  > -->
-
-		<div class="col-8 m-auto">
-			<label for="nome" class="form-label">Nome:</label>
+	<div class="col-10 m-auto">
+	<div input-group class="card" >
+                    <div class="card-header text-left">{{ __('Cadastrar Jogador') }}</div>
+		<div class="col-9 m-auto">
+			<label for="nome" class="form-label" >Nome:</label>
+			
 			<input
 				type="text"
 				class="text45Left form-control"
@@ -30,6 +33,7 @@
 				value="{{$jogador[0]['nome'] ?? ''}}"
 				placeholder="Nome"
 				required
+				
 			>
 
 			<label for="nome" class="form-label">Apelido:</label>
@@ -64,7 +68,7 @@
 				placeholder="( ) - ---- ----"
 			>
 
-			<label for="inData" class="form-label">Data de nacimento</label>
+			<label for="inData" class="form-label">Data de nacimento:</label>
 			<input
 				type="date"
 				class="text45Left form-control"
@@ -75,11 +79,14 @@
 				max="9999-12-31"
 				required
 			>
+			<br>
+			<div class="col-10-auto">
+			<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button>  
+			
 		</div>
-
-		<div class="col-8 m-auto">
-			<button type="submit" class="btn btn-primary">Salvar</button>
 		</div>
+</div> </div>
+			
 	</form>
-
+<br>
 @endsection('parte')

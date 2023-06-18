@@ -12,6 +12,7 @@
 		</div>
 		@endif
 		<form action={{route("usuario.validaNovaSenha", )}} method='PUT'>
+			
 		@csrf
 			<div class="text-left mt-3 mb-4">
 
@@ -46,5 +47,7 @@
 					<button type="submit" class="btn btn-primary btn-margin-top">Alterar</button>
 				</div>
 			</div>
+			
 		</form>
+		
 	@endsection

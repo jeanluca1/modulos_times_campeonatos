@@ -12,6 +12,9 @@
 		</div>
 		@endif
 		<form action={{route("usuario.validaAlterarSenha")}} method='PUT'>
+	<div input-group class="card col-9 m-auto" >
+
+		<div class="card-header text-left">{{ __('Atualizar Senha') }}</div>
 		@csrf
 			<div class="text-left mt-3 mb-4">
 
@@ -23,7 +26,7 @@
 
 				<div class="col-6 m-auto">
 					<input type="hidden" id="hdUsuario" name="hdUsuario" value="{{$usuario[0]['id']}}">
-					<label for="inSenhaAtual" class="form-label">Digite sua sennha atual:</label>
+					<label for="inSenhaAtual" class="form-label">Digite sua senha atual:</label>
 					<input
 						type="password"
 						class="form-control"
@@ -52,8 +55,9 @@
 				</div>
 
 				<div class="col-6 m-auto">
-					<button type="submit" class="btn btn-primary btn-margin-top">Alterar</button>
+					<button type="submit" class="btn btn-primary btn-margin-top ">Alterar</button>
 				</div>
 			</div>
+</div>
 		</form>
 	@endsection

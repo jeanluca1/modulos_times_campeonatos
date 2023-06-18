@@ -4,6 +4,7 @@
 <title>Jogador</title>
 
 	<div class="text-left mt-3 mb-4">
+	<div input-group class="card col-9 m-auto" >
 		@if(!empty($id))
 			<form name="formEdit" id="formEdit" method="put" action="{{ route("arbrito.edita", ['id' => $id]) }}">
 				@method('PUT')
@@ -11,7 +12,8 @@
 			<form name="formCadastro" id="formCadastro" method="post" action="{{route("arbrito.salva")}}">
 		@endif
 		@csrf
-
+		
+		<div class="card-header text-left">{{ __('Cadastro Arbrito') }}</div>
 		<div class="col-8 m-auto">
 			<label for="nome" class="form-label">Nome:</label>
 			<input
@@ -55,10 +57,13 @@
 			>
 
 		</div>
-
+		<div>
+			<br>
 		<div class="col-8 m-auto">
-			<button type="submit" class="btn btn-primary">Salvar</button>
+			<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button>
 		</div>
+		</div>
+
 	</form>
 
 @endsection('parte')

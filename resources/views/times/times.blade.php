@@ -6,10 +6,12 @@
 <body>
 
 	<div class="text-left mt-3 mb-4" >
-		<div class="col-8 m-auto">
+	<div input-group class="card col-9 m-auto"  >
+	<div class="card-header text-left">{{ __('Cadastrar Time') }}</div>
+		<div class="col-8 m-auto ">
 			<form class="row g-7" name="formCadastro" id="formCadastro" method="post" action="{{url('time')}}">
 				@csrf
-				<label for="nometime" class="form-label">Nome do Time:</label>
+				<label for="nometime" class="form-label row">Nome do Time:</label>
 				<input
 					type="text"
 					class="text45Left form-control"
@@ -19,7 +21,7 @@
 					required
 				>
 
-				<label for="sigla" class="form-label">Sigla:</label>
+				<label for="sigla" class="form-label row">Sigla:</label>
 				<input
 					type="text"
 					class="text45Left form-control"
@@ -29,7 +31,7 @@
 					required
 				>
 
-				<label for="telefone" class="form-label">Telefone:</label>
+				<label for="telefone" class="form-label row">Telefone:</label>
 					<input
 						type="text"
 						class="text45Left form-control telefone"
@@ -55,7 +57,7 @@
 				</div>
 				-->
 
-				<label for="cep" class="form-label">CEP:</label>
+				<label for="cep" class="form-label row">CEP:</label>
 				<input
 					type="text"
 					class="text45Left form-control cep"
@@ -65,17 +67,17 @@
 					required
 				>
 
-				<label for="endereco" class="form-label">Endereço:</label>
+				<label for="endereco" class="form-label row">Endereço:</label>
 				<input
 					type="text"
 					class="text45Left form-control"
 					id="inEndereco"
 					name="inEndereco"
-					placeholder="Rua:"
+					placeholder="Logradouro:"
 					required
 				>
 
-				<label for="bairo" class="form-label">Bairro:</label>
+				<label for="bairo" class="form-label row">Bairro:</label>
 				<input
 					type="text"
 					class="text45Left form-control"
@@ -85,7 +87,7 @@
 					required
 				>
 
-				<label for="complemento" class="form-label">Complemento:</label>
+				<label for="complemento" class="form-label row">Complemento:</label>
 				<input
 					type="text"
 					class="text45Left form-control"
@@ -94,22 +96,25 @@
 					placeholder="Apartamento, quadra..."
 				>
 
-				<label for="cidade" class="form-label">Cidade:</label>
+				<label for="cidade" class="form-label row">Cidade:</label>
 				<input
 					type="text"
 					class="text45Left form-control"
 					id="inCidade"
 					name="inCidade"
+					placeholder="Cidade: "
 					required
 				>
 
-				<label for="estado" class="form-label">Estado:</label>
+				<label for="estado" class="form-label row">Estado:</label>
 				<select id="slEstado" name="slEstado" class="text45Left form-select">
 					<option selected>Selecione</option>
 					<option>MG</option>
 				</select>
+				<div><br>
+				<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button> </div>
 				
-				<button type="submit" class="btn btn-success">Salvar</button>
+</div>
 				<!--<button class="btn btn-danger">Cancelar</button>-->
 			</form>
 		</div>

@@ -20,7 +20,7 @@ class time extends Model
         'bairro',
         'complemento',
         'cep',
-        'estado',
+        'estado'
 
     ];
 

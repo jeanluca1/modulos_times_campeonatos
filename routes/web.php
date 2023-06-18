@@ -94,7 +94,10 @@ define("TIMES_CONTROLLER", 'App\Http\Controllers\TimeController');
 
 Route::get('/time', TIMES_CONTROLLER.'@index')
     ->name("time.index");
+    Route::get('/time{idTime}/amistoso', TIMES_CONTROLLER.'@criaramistoso')
+    ->name("time.amistoso");
     
+
 Route::get('/time/{idTime}/gerenciar', TIMES_CONTROLLER.'@gerenciar')
     ->name("time.gerenciar");
 

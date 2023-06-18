@@ -53,7 +53,16 @@
                                     class="form-select"
                                     required
                                 >
-                                    <option value="">Selecione...</option>
+                                <?php if(isset($idTime)){
+                                    
+                                    $dados['slTimeCasa']=$idTime;
+
+                                    
+                                }
+                                
+                                ?>
+                                    <option value="">Selecione...</option> 
+                                   
                                     @foreach($times as $time)
                                     <option
                                     value = {{
