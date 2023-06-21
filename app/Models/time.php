@@ -50,4 +50,13 @@ class time extends Model
             ->where('id_usuario', '=', $idUsurio)
             ->get()->toArray();
     }
+
+    public function listaTodosTimes()
+    {
+        return time::select('id', 'sigla', 'nome', 'Eexcluido')
+            ->orderby('nome')
+            ->get()->toArray();
+    }
 }
+
+

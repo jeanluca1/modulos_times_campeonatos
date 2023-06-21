@@ -260,4 +260,17 @@ class partida extends Model
         ->whereRaw('id_time_casa = ? or id_time_visitante = ?', [$idTime, $idTime])
         ->get()->toArray();
     }
+
+    public function listaamistosos($idTime)  {
+
+        return partida::select('partidas.id', 'id_campeonato', 'partidas.id_time_casa',
+        'partidas.id_time_visitante')
+    //->where('id_campeonato', '=', 0)
+    ->whereRaw('id_campeonato = 0 and( id_time_casa = ? or id_time_visitante = ?)', [$idTime, $idTime])
+    ->get()->toArray();
+
+        
+    }
+
+
 }

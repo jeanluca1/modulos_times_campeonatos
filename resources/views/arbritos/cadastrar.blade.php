@@ -63,7 +63,7 @@
 			<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button>
 		</div>
 		</div>
-
+</div>
 	</form>
 
 @endsection('parte')

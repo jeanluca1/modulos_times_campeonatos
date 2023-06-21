@@ -4,7 +4,12 @@
 <title>Cadastro - Local</title>
 </head>
 <body>
+				@if(session('mensagem'))
+                <div class="alert alert-success text-center mt-4 mb-4 p-2">
+                    <p>{{session('mensagem')}}</p>
+                </div>
 
+            @endif
 	@if(isset($errors) && count($errors)>0)
 		<div class="alert alert-danger text-center mt-4 mb-4 p-2">
 			@foreach($errors->all() as $erro)

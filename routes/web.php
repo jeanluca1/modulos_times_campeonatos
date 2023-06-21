@@ -91,13 +91,18 @@ Route::get('/local/{idTime}/ativarDesativar', 'App\Http\Controllers\CadastroLoca
 
 //Rotas de Times
 define("TIMES_CONTROLLER", 'App\Http\Controllers\TimeController');
+define("AMISTOSOS_CONTROLLER",'App\Http\Controllers\AmistososController');
 
+Route::get('/amistoso/{idTime}', AMISTOSOS_CONTROLLER.'@listarpartidasamistosos')
+    ->name("amistoso.listar");
+    
 Route::get('/time', TIMES_CONTROLLER.'@index')
     ->name("time.index");
     Route::get('/time{idTime}/amistoso', TIMES_CONTROLLER.'@criaramistoso')
     ->name("time.amistoso");
     
 
+    
 Route::get('/time/{idTime}/gerenciar', TIMES_CONTROLLER.'@gerenciar')
     ->name("time.gerenciar");
 
