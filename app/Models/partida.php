@@ -263,13 +263,20 @@ class partida extends Model
 
     public function listaamistosos($idTime)  {
 
-        return partida::select('partidas.id', 'id_campeonato', 'partidas.id_time_casa',
-        'partidas.id_time_visitante')
-    //->where('id_campeonato', '=', 0)
+        return partida::select('partidas.id', 'id_campeonato', 'time1.nome as timeCasa',
+    'time2.nome as timeVisitante','local.endereco', 'dataHora','status',
+    'gols_time_casa', 'gols_time_visitante', 'status',
+    'etapa', 'local.nome as nomeLocal'
+    )
+    
+        ->join('times as time1', 'time1.id', '=', 'partidas.id_time_casa')
+->join('times as time2', 'time2.id', '=', 'partidas.id_time_visitante')
+->join('local', 'local.id', '=', 'partidas.id_local')
+   
     ->whereRaw('id_campeonato = 0 and( id_time_casa = ? or id_time_visitante = ?)', [$idTime, $idTime])
     ->get()->toArray();
 
-        
+     
     }
 
 

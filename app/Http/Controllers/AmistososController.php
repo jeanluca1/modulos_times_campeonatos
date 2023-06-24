@@ -11,6 +11,7 @@ use App\Models\joga_em;
 use App\Models\jogador;
 use App\Models\arbritos;
 use Auth;
+use App\Models\Arquivo;
 
 class AmistososController extends Controller
 {
@@ -22,12 +23,32 @@ class AmistososController extends Controller
     {  
         $modelPartidas=new partida();
 
-        $mandante=$modelPartidas-> listaamistosos($idTime);
+        $partidas=$modelPartidas-> listaamistosos($idTime);
 
-dd($mandante);
+ //dd($mandante);
+$times= array_column($partidas, 'id_time_casa');
+$locais= array_column($partidas, 'nome', 'idlocal');
+//$arbritosmodel=new arbritos;   
+$modelArquivo = new Arquivo();
+$arquivos = array_column(
+    $modelArquivo->lstArquivos(array_column($partidas, 'id')),
+    'id_partida',
+    'arquivo',
+);
 
-    }
+return view(
+    'times.partidasAmistosas',
+    compact('partidas' , 'arquivos')
+);
+
+/*return view(
+  'times.partidasAmistosas',
+compact(  'times', 'locais', 'arbritos' ,'idTime')
+);*/
+
+}
     
+
     
     public function criaramistoso($idTime)
     {  

@@ -658,17 +658,24 @@ class CampeonatosController extends Controller
     {
         $modelPartida = new partida();
         $partida = $modelPartida->lstPartida($idPartida);
-        
-        $modelTimes = new timesParticipantes();
-        $times = $modelTimes->lstTimesParticipantes(array($partida[0]['id_campeonato']));
+        //dd($partida);
+        if($partida[0]['id_campeonato']!=0){
+
+            $modelTimes = new timesParticipantes();
+            $times = $modelTimes->lstTimesParticipantes(array($partida[0]['id_campeonato']));
+            $modelCampeonato = new campeonato();
+            $dados = $modelCampeonato->lstCampeonatosPorId([$partida[0]['id_campeonato']]);
+            $formato = ($dados[0]->formato);        
+        }
+        else{
+            $modelTimes = new time();
+        $times = $modelTimes->sltTimes();
+        }
         
         $modelLocal = new local();
         $locais = $modelLocal->lstLocais();
 
-        $modelCampeonato = new campeonato();
-        $dados = $modelCampeonato->lstCampeonatosPorId([$partida[0]['id_campeonato']]);
-        $formato = ($dados[0]->formato);
-
+      
         $modelArbrito = new arbritos();
         $arbritos = $modelArbrito->lstArbritos(0);
 
@@ -681,7 +688,14 @@ class CampeonatosController extends Controller
         $dados['slAuxiliar1'] = $partida[0]['id_auxiliar1'];
         $dados['slAuxiliar2'] = $partida[0]['id_auxiliar2'];
         $dados['slMesario'] = $partida[0]['id_mesario'];
-        $idCampeonato = $partida[0]['id_campeonato'];
+        if($partida[0]['id_campeonato']!=0){
+            $idCampeonato = $partida[0]['id_campeonato'];
+        }
+        else{
+            $idCampeonato=0;
+            $formato=null;
+            $grupo=null;
+        }
         return view(
             'campeonatos.criaPartidas',
             compact('idCampeonato', 'idPartida', 'times', 'locais', 'dados', 'partida',
@@ -776,6 +790,7 @@ class CampeonatosController extends Controller
     {
 
         $idCampeonato = $request['hdIdCampeonato'];
+        
         $grupo = $request['hdGrupo'];
         $dados['slTimeCasa'] = $request['slTimeCasa'];
         $dados['slTimeVizitante'] = $request['slTimeVizitante'];
@@ -792,7 +807,7 @@ class CampeonatosController extends Controller
 
         if ($request['slTimeCasa'] == $request['slTimeVizitante']) {
             $modelTimes = new timesParticipantes();
-            $times = $modelTimes->lstTimesParticipantes(array($idCampeonato));
+            $times = $modelTimes->lstTimesParticipantes(array($idCampeonato)); 
         
             $modelLocal = new local();
             $locais = $modelLocal->lstLocais();
@@ -826,8 +841,18 @@ class CampeonatosController extends Controller
                 $request['slMesario']
 
             );
+//dd('aqui');
+            
+            if ($idCampeonato==0){
 
-            return Redirect("campeonato/$idCampeonato/partidas");
+                return Redirect("/amistoso/$request->slTimeCasa");
+
+            }
+            else
+            {
+              return Redirect("campeonato/$idCampeonato/partidas");
+
+            }
         }
     }
 
