@@ -43,7 +43,7 @@ class CadastroLocalController extends Controller
 
     public function store(LocalRequest $request)
     {
-        dd($request);
+       // dd($request);
         $cadastro=$this->objLocal->create([
             'nome'=>$request->inNome,
             'endereco'=>$request->inEndereco,
