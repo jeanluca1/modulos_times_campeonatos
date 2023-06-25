@@ -13,9 +13,9 @@
 				</div>
 			@endif
 
-			@if(isset($campeonato))
 				<form class="row g-7" name="formEdit" id="formEdit" method="post" action="{{url("campeonato/$campeonato->id")}}">
-				@method('PUT')
+							@if(isset($campeonato))
+@method('PUT')
 			@else
 				<form class="row g-7" name="formCadastro" id="formCadastro" method="post" action="{{url('campeonato')}}">
 			@endif

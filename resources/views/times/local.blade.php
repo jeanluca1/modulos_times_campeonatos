@@ -107,10 +107,8 @@
 				<select id="slEstado" name="slEstado" class="text45Left form-select">
 					<option selected>Selecione...</option>
 					<option value = 'MG'
-						{{isset($local[0]['estado'])
-						? ($local[0]['estado'] == 'MG' ? 'selected' : '')
-						: ''}}
-					>MG</option>
+						selected
+					>MG</option> 
 					<!--<option value = 'ES'
 						{{isset($local[0]['estado'])
 						? ($local[0]['estado'] == 'ES' ? 'selected' : '')

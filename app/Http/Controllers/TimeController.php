@@ -71,6 +71,40 @@ class TimeController extends Controller
         return view(view:'times.times');
     }
 
+
+
+    public function editar($idtime)
+    {
+        $modelTime= new time();
+        $time=$modelTime->lstTimes([$idtime]);
+       // dd($time);
+        return view('times.times', compact('time'));
+        
+    }
+
+    public function update(Request $request, $idtime)
+    {
+        $this->objTime->where(['id'=>$idtime])->update([
+            'nome'=>$request->inNometime,
+            'sigla'=>$request->inSigla,
+            'endereco'=>$request->inEndereco,
+            'cidade'=>$request->inCidade,
+            'bairro'=>$request->inbairro,
+            'complemento'=>$request->inComplemento,
+            'bairro'=>$request->inBairro,
+            'cep'=>$request->inCep,
+            'estado'=>$request->slEstado,
+            'id_usuario'=> intval(Auth::user()->id),
+            'Eexcluido'=>0,
+        ]);
+        session()->flash('mensagem', "O Time $request->inNometime, Foi Editado!");
+        return redirect('time');
+        
+
+
+    }
+
+
     public function store(Request $request)
     {
         $cadastro=$this->objTime->create([

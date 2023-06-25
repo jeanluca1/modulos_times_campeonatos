@@ -106,6 +106,10 @@ Route::get('/time', TIMES_CONTROLLER.'@index')
 Route::get('/time/{idTime}/gerenciar', TIMES_CONTROLLER.'@gerenciar')
     ->name("time.gerenciar");
 
+Route::get('/time/{idTime}/editar', TIMES_CONTROLLER.'@editar')
+    ->name("time.editar");
+
+
 Route::get('/time/cadastrar', TIMES_CONTROLLER.'@cadastrar')
     ->name("time.cadastrar");
 

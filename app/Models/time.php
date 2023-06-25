@@ -13,7 +13,7 @@ class time extends Model
         'id_usuario',
         'sigla',
         'nome',
-        'id_local',
+        
         'Eexcluido',
         'endereco',
         'cidade',
@@ -31,7 +31,7 @@ class time extends Model
 
     public function lstTimes($arrayTimes)
     {
-        return time::select('id', 'nome', 'Eexcluido')
+        return time::select('id', 'nome', 'sigla','Eexcluido','endereco','cidade','bairro','complemento','cep','estado')
             ->whereIn('id', $arrayTimes)
             ->get()->toArray();
     }

@@ -56,6 +56,10 @@
                                     <a href="{{ route('time.ativarDesativar',['idTime' => $time['id']]) }}">
                                         <button class="btn btn-{{$cor}} btn-size-120">{{$texto}}</button>
                                     </a>
+                                    <a href="{{ route('time.editar',['idTime' => $time['id']]) }}">
+                                    <button class="btn btn-warning btn-size-120">Editar Time</button>
+
+                                    </a>
                                 </div>
                             </td>
                         </tr>

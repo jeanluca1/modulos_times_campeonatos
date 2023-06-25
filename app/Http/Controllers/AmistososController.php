@@ -35,10 +35,10 @@ $arquivos = array_column(
     'id_partida',
     'arquivo',
 );
-
+//dd($partidas);
 return view(
     'times.partidasAmistosas',
-    compact('partidas' , 'arquivos')
+    compact('partidas' , 'arquivos', 'idTime')
 );
 
 /*return view(

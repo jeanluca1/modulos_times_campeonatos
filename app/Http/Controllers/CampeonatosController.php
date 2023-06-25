@@ -747,13 +747,15 @@ class CampeonatosController extends Controller
             $dataHora = $this->trataDataHora($request['inData'], $request['inHora']);
 
             $modelPartida = new partida();
-
+            if( $idCampeonato !=0){
+            //dd('qui');
             $partidas = array_column(
                 $modelPartida->lstPartidasPorIdCampeonato($idCampeonato),
                 'etapa'
             );
             $etapa = empty($partidas) ? 0 : max($partidas);
-
+        } 
+        else{$etapa=0;}
             $modelPartida->insPartida(
                 $request['hdIdCampeonato'],
                 $request['slTimeCasa'],
@@ -768,7 +770,17 @@ class CampeonatosController extends Controller
                 $request['slMesario'],
             );
 
-            return Redirect("campeonato/$idCampeonato/partidas");
+            if ($idCampeonato==0){ 
+
+                return Redirect("/amistoso/$request->slTimeCasa");
+                
+
+            }
+            else
+            {
+              return Redirect("campeonato/$idCampeonato/partidas");
+
+            }
         }
     }
 
@@ -778,11 +790,28 @@ class CampeonatosController extends Controller
         $campeonato = $modelPartida->lstCampeonatoPorPartida($idPartida);
         $idCampeonato = $campeonato[0]['id_campeonato'];
         $partidas = $modelPartida->lstPartidasPorIdCampeonato($idCampeonato);
+        $time=array_column($modelPartida->lstPartida($idPartida),'id_time_casa');
+
+        //dd($time,$campeonato );
         $modelPartida->delPartida($idPartida);
 
         session()->flash('mensagem', "Partida excluida com sucesso!");
+       
         
-        return Redirect("campeonato/$idCampeonato/partidas");
+        if ($idCampeonato==0){ 
+
+           //dd($idPartida , $time );
+            return Redirect("/amistoso/$time[0]");
+            
+            
+
+        }
+        else
+        { 
+          return Redirect("campeonato/$idCampeonato/partidas");
+
+        }
+        
         //return view('campeonatos.partidas', compact('idCampeonato', 'partidas'));
     }
 
@@ -843,9 +872,11 @@ class CampeonatosController extends Controller
             );
 //dd('aqui');
             
-            if ($idCampeonato==0){
+            
+            if ($idCampeonato==0){ 
 
                 return Redirect("/amistoso/$request->slTimeCasa");
+                
 
             }
             else

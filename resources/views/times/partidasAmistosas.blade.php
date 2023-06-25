@@ -88,23 +88,26 @@
                                 <div input-group>
                                     @if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminTime', 'AdminGeral']))
                                     
-                                            <a href="{{
+                                        @if($partida['id_time_casa']==$idTime )  
+                                             <a href="{{
                                                 route("campeonato.editarPartida", ['idPartida' => $partida['id']])
                                             }}">
                                                 <button class="btn btn-primary btn-size-160">Editar Partida</button>
                                             </a>
-                                        
+                                        @endif
                                         @if(!in_array($partida['id'], $arquivos))
                                             <a href="{{
                                                 route("campeonato.geraPDF", ['idPartida' => $partida['id']])
                                             }}" target="_blank">
                                                 <button class="btn btn-danger btn-size-160">Gerar PDF</button>
                                             </a>
+                                        
                                         @endif
                                         
                                        
 
-                                        @if(in_array($partida['id'], $arquivos))
+                                        @if(in_array($partida['id'], $arquivos) )
+                                        
                                         <a href="{{
                                             route("campeonato.removerSumula", ['idPartida' => $partida['id']])
                                         }}">
@@ -112,10 +115,11 @@
                                         </a>
                                         @endif
                                         
-                                        
+                                        @if($partida['id_time_casa']==$idTime)  
                                         <a href="{{$href}}">
                                             <button class="btn btn-success btn-size-160">{{$btn}}</button>
                                         </a>
+                                        @endif
                                     @endif
                                     @if ($partida['status'] == 1)
                                         <a href="{{$rotaSumula}}">

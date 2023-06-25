@@ -7,15 +7,24 @@
 
 	<div class="text-left mt-3 mb-4" >
 	<div input-group class="card col-9 m-auto"  >
+
 	<div class="card-header text-left">{{ __('Cadastrar Time') }}</div>
 		<div class="col-8 m-auto ">
-			<form class="row g-7" name="formCadastro" id="formCadastro" method="post" action="{{url('time')}}">
+		
+			@if(isset($time))
+			<?php $id=$time[0]['id'];?> 	
+				<form class="row g-7" name="formEdit" id="formEdit" method="post" action="{{url("time/$id")}}">
+				@method('PUT')
+			@else
+				<form class="row g-7" name="formCadastro" id="formCadastro" method="post" action="{{url('time')}}">
+			@endif
 				@csrf
 				<label for="nometime" class="form-label row">Nome do Time:</label>
 				<input
 					type="text"
 					class="text45Left form-control"
 					name="inNometime"
+					 value= "{{isset($time)? $time[0]['nome']:''}}"
 					id="inNometime"
 					placeholder="Nome Time"
 					required
@@ -26,36 +35,11 @@
 					type="text"
 					class="text45Left form-control"
 					id="inSigla"
+					value= "{{isset($time)? $time[0]['sigla']:''}}"
 					name = "inSigla"
 					placeholder="Sigla do Time"
 					required
 				>
-
-				<label for="telefone" class="form-label row">Telefone:</label>
-					<input
-						type="text"
-						class="text45Left form-control telefone"
-						id="inTelefone"
-						name='inTelefone'
-						value="{{$usuario->telefone ?? ''}}"
-						placeholder="( ) - ---- ----"
-					>
-				<!--
-				<div class="col-md-6">
-					<label for="emailtime" class="form-label">Email:</label>
-					<input type="emailtime" class="form-control" id="inEmailtime"  placeholder="....@email.com">
-				</div>
-
-				<div class="col-md-6">
-					<label for="responsavel" class="form-label">Responsável:</label>
-					<input type="text" class="form-control" id="inresponsavel"  placeholder="Nome do Responsavel">
-				</div>
-
-				<div class="col-md-6">
-					<label for="cpfresp" class="form-label">CPF:</label>
-					<input type="cpfresp" class="form-control" id="incpfesp"  placeholder="***.***.***-**">
-				</div>
-				-->
 
 				<label for="cep" class="form-label row">CEP:</label>
 				<input
@@ -63,6 +47,7 @@
 					class="text45Left form-control cep"
 					id="inCep"
 					name= "inCep"
+					value= "{{isset($time)? $time[0]['cep']:''}}"
 					placeholder="_____ - __"
 					required
 				>
@@ -72,6 +57,7 @@
 					type="text"
 					class="text45Left form-control"
 					id="inEndereco"
+					value= "{{isset($time)? $time[0]['endereco']:''}}"
 					name="inEndereco"
 					placeholder="Logradouro:"
 					required
@@ -82,8 +68,9 @@
 					type="text"
 					class="text45Left form-control"
 					id="inBairro"
+					value= "{{isset($time)? $time[0]['bairro']:''}}"
 					name="inBairro"
-					placeholder="Bairo:"
+					placeholder="Bairro:"
 					required
 				>
 
@@ -93,6 +80,7 @@
 					class="text45Left form-control"
 					id="inComplemento"
 					name="inComplemento"
+					value= "{{isset($time)? $time[0]['complemento']:''}}"
 					placeholder="Apartamento, quadra..."
 				>
 
@@ -102,14 +90,16 @@
 					class="text45Left form-control"
 					id="inCidade"
 					name="inCidade"
+					value= "{{isset($time)? $time[0]['cidade']:''}}"
 					placeholder="Cidade: "
 					required
 				>
 
 				<label for="estado" class="form-label row">Estado:</label>
 				<select id="slEstado" name="slEstado" class="text45Left form-select">
+					
 					<option selected>Selecione</option>
-					<option>MG</option>
+					<option selected>MG</option>
 				</select>
 				<div><br>
 				<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button> </div>
