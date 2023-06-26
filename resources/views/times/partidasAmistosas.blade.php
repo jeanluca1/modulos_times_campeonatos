@@ -55,11 +55,11 @@
                     }
 
                     if (in_array($partida['id'], $arquivos)) {
-                        $textoSumula = 'Baixar Súmula';
+                        $textoSumula = 'Baixar PDF';
                         $rotaSumula = route("campeonato.downloadArquivo", ['idPartida' => $partida['id']]);
                         $propriedade = 'success';
                     } else {
-                        $textoSumula = 'Enviar Sumula';
+                        $textoSumula = 'Enviar PDF';
                         $rotaSumula = route("campeonato.upLoadArquivo", ['idPartida' => $partida['id']]);
                         $propriedade = 'success';
                     }
@@ -99,7 +99,7 @@
                                             <a href="{{
                                                 route("campeonato.geraPDF", ['idPartida' => $partida['id']])
                                             }}" target="_blank">
-                                                <button class="btn btn-danger btn-size-160">Gerar PDF</button>
+                                                <button class="btn btn-danger btn-size-160">Gerar PDF/Ñ USAR</button>
                                             </a>
                                         
                                         @endif
@@ -111,7 +111,7 @@
                                         <a href="{{
                                             route("campeonato.removerSumula", ['idPartida' => $partida['id']])
                                         }}">
-                                            <button class="btn btn-danger btn-size-160">Remover Súmula</button>
+                                            <button class="btn btn-danger btn-size-160">Remover PDF</button>
                                         </a>
                                         @endif
                                         
