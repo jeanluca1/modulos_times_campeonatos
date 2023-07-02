@@ -284,7 +284,7 @@ class partida extends Model
     {
         return partida::select('partidas.id as idPartida', 'time1.id as idTimeCasa',
             'time1.nome as timeCasa', 'time2.id as idTimeVisitante',
-            'time2.nome as timeVisitante','local.endereco', 'local.nome', 'local.numero','local.bairro', 'dataHora','status',
+            'time2.nome as timeVisitante','local.endereco', 'local.nome',  'local.cidade','local.numero','local.bairro', 'dataHora','status',
             
             'partidas.id_arbrito','partidas.id_auxiliar1', 'partidas.id_auxiliar2', 'partidas.id_mesario',
             'arbitro.nome as arbritoNome','aux1.nome as aux1Nome', 'aux2.nome as aux2Nome',

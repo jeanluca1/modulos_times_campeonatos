@@ -11,7 +11,7 @@
                 </a>
                 <a href="{{route('time.amistoso', ['idTime' => $idTime])}} ">
                 
-                <button class="btn btn-outline-primary">Adicionar Partida Amistosa</button>
+                <button class="btn btn-outline-primary">Adicionar Partida Amistosa </button>
                 
                 
 
@@ -20,7 +20,7 @@
 
 
     <a  href="{{route('amistoso.listar',['idTime' => $idTime])}}">
-<button class="btn btn-outline-dark"> ver partidas amistosas</button>
+<button class="btn btn-outline-dark">Geregenciar partidas amistosas</button>
     
     </a>
     </div>

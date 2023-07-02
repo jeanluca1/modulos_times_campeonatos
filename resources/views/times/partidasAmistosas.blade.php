@@ -1,12 +1,12 @@
 @extends('times.tela.telas')
 
 @section('parte')
-    <title>Partidas</title>
+    <title>Amistosos</title>
     </head>
     <body>
         <div class="text-center col-8 m-auto">
             <hr>
-            <h2 class="text-center">Partidas</h2>
+            <h2 class="text-center">Partidas Amistosas</h2>
             <hr>
 
             @if(session('mensagem'))
@@ -28,7 +28,7 @@
                 
                 <a  href="{{route('time.amistoso', ['idTime' => $idTime])}}">
                 
-                    <button class="btn btn-outline-success btn-margin-top-botton" >Adicionar Partida Amistosa</button>
+                    <button class="btn btn-outline-success btn-margin-top-botton" >Cadastrar Nova Partida</button>
                 </a>
             @endif
         </div>

@@ -49,6 +49,10 @@
 
     <table>
         <thead>
+        <tr>
+                <th colspan="3" class="tableitem">{{strtoupper(' LMF - Liga Monlevadense de Futebol')}}</th>
+            </tr>
+        
             <tr>
                 <th colspan="3" class="tableitem">{{strtoupper('Comprovante Partida Amistosa')}}</th>
             </tr>
@@ -74,9 +78,10 @@
                 <th colspan="3" class="tableitem">{{strtoupper('EndereÇo')}}</th>
             </tr>
             <tr>
-                <td colspan="1" class="tableitem"> Rua:  {{$partida[0]['endereco']}}</td>
+                <td colspan="1" class="tableitem"> Rua:  {{$partida[0]['endereco']}},   N°: {{$partida[0]['numero']}} </td>
                 <td colspan="1" class="tableitem"> Bairro:  {{$partida[0]['bairro']}}</td>
-                <td colspan="1" class="tableitem"> Numero: {{$partida[0]['numero']}} </td>
+                <td colspan="1" class="tableitem"> Cidade:  {{$partida[0]['cidade']}}</td>
+                
             </tr>
             
             
