@@ -17,7 +17,7 @@
 
     <div class="text-center col-8 m-auto">
         <a href="{{ route('time.cadastrar',['idUsuario' => Auth::user()->id]) }}">
-            <button class="btn btn-success">Criar Novo Time</button>
+            <button class="btn btn-outline-success">Criar Novo Time</button>
         </a>
     </div>
 

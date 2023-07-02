@@ -104,9 +104,21 @@
 				<div><br>
 				<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button> </div>
 				
-</div>
+            
+
+				
 				<!--<button class="btn btn-danger">Cancelar</button>-->
 			</form>
+
+			<form action="{{ route('time.index') }}"  ><a>
+				<div class="col-12 m-auto">
+				<div input-group class=" text-center" >
+					<div class="col-10-auto">
+                <button  class="btn btn-warning col-12 btn-size-120">Cancelar</button>
+					</div>
+				</div>
+				</div>
+            </a></form>
 		</div>
 	</div>
 	@endsection

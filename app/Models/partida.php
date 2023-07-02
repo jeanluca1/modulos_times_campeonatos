@@ -280,4 +280,29 @@ class partida extends Model
     }
 
 
+    public function lstDadosPartidaAmistosoPorIdPartida($idPartida)
+    {
+        return partida::select('partidas.id as idPartida', 'time1.id as idTimeCasa',
+            'time1.nome as timeCasa', 'time2.id as idTimeVisitante',
+            'time2.nome as timeVisitante','local.endereco', 'local.nome', 'local.numero','local.bairro', 'dataHora','status',
+            
+            'partidas.id_arbrito','partidas.id_auxiliar1', 'partidas.id_auxiliar2', 'partidas.id_mesario',
+            'arbitro.nome as arbritoNome','aux1.nome as aux1Nome', 'aux2.nome as aux2Nome',
+            'mesario.nome as mesarioNome'
+            )
+        ->join('times as time1', 'time1.id', '=', 'partidas.id_time_casa')
+        ->join('times as time2', 'time2.id', '=', 'partidas.id_time_visitante')
+        ->join('local', 'local.id', '=', 'partidas.id_local')
+        
+        ->leftJoin('arbitro', 'arbitro.id', 'partidas.id_arbrito')
+        ->leftJoin('arbitro as aux1', 'aux1.id', 'partidas.id_auxiliar1')
+        ->leftJoin('arbitro as aux2', 'aux2.id', 'partidas.id_auxiliar2')
+        ->leftJoin('arbitro as mesario', 'mesario.id', 'partidas.id_mesario')
+        ->where('partidas.id', '=', $idPartida)
+        ->get()->toArray();
+    }
+
+
+
+
 }

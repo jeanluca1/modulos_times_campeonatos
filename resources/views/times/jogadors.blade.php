@@ -9,6 +9,8 @@
 			<p>{{session('mensagem')}}</p>
 		</div>
 	@endif
+	<div class="col-10 m-auto">
+	<div input-group class="card" >
 
 		@if(!empty($id))
 			<form name="formEdit" id="formEdit" method="put" action="{{ route("jogador.edita", ['id' => $id, 'time' => $time]) }}">
@@ -19,9 +21,8 @@
 		@csrf
 
 	<!-- <form class="row g-3 conterner"  method="post"  action="{{url('cadastrojogador')}}"  > -->
-	<div class="col-10 m-auto">
-	<div input-group class="card" >
-                    <div class="card-header text-left">{{ __('Cadastrar Jogador') }}</div>
+	
+        <div class="card-header text-left">{{ __('Cadastrar Jogador') }}</div>
 		<div class="col-9 m-auto">
 			<label for="nome" class="form-label" >Nome:</label>
 			
@@ -83,10 +84,21 @@
 			<div class="col-10-auto">
 			<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button>  
 			
+			
 		</div>
 		</div>
-</div> </div>
+
 			
 	</form>
+				<form action="{{ route('jogador.index') }}"  ><a>
+				<div class="col-9 m-auto">
+				<div input-group class=" text-center" >
+					<div class="col-10-auto">
+                <button  class="btn btn-warning col-12 btn-size-120">Cancelar</button>
+					</div>
+				</div>
+				</div>
+            </a></form>
+	</div>
 <br>
 @endsection('parte')

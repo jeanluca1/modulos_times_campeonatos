@@ -12,6 +12,7 @@ use App\Models\jogador;
 use App\Models\arbritos;
 use Auth;
 use App\Models\Arquivo;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AmistososController extends Controller
 {
@@ -47,9 +48,107 @@ compact(  'times', 'locais', 'arbritos' ,'idTime')
 );*/
 
 }
+   
+public function geraSumulaPdf($idPartida)
+{
     
+    $modelPartida = new partida();
+    $partida =  $modelPartida->lstDadosPartidaAmistosoPorIdPartida($idPartida);
+//dd($partida);
+    $modeljoga_em = new joga_em();
+    $jogadoresTimeCasa = $modeljoga_em->lstJogadoresPorTime(
+        $partida[0]['idTimeCasa'],
+        0
+    );
+    
+    $jogadoresTimeVisitante = $modeljoga_em->lstJogadoresPorTime(
+     
+        $partida[0]['idTimeVisitante'],
+        0
+    );
+    $qtdeJogadores = count($jogadoresTimeCasa) >= count($jogadoresTimeVisitante)
+        ? count($jogadoresTimeCasa)
+        : count($jogadoresTimeVisitante);
+    
+    //dd($jogadoresTimeCasa, $jogadoresTimeVisitante);
+    $partida[0]['nome']='amistoso';
+    $pdf = PDF::loadView(
+        'campeonatos.sumulaPDF',
+        compact(
+            'partida',
+            'qtdeJogadores',
+            'jogadoresTimeCasa',
+            'jogadoresTimeVisitante'
+        )
+        
+    );
+    
+    return $pdf->setPaper('A4')->stream('sumula.pdf');
+}
 
+public function gerarComprovantePdf($idPartida)
+{
+    $modelPartida = new partida();
+    $partida =  $modelPartida->lstDadosPartidaAmistosoPorIdPartida($idPartida);
+    //dd($partida);
+    $pdf = PDF::loadView(
+        'times.comprovantepdf',
+        compact(
+
+            'partida',
+            
+        )
+        
+    );
     
+    return $pdf->setPaper('A4')->stream('comprovantepdf.pdf');
+
+
+
+}
+public function comprovantepresencapdf($idPartida)
+{
+    $ 
+    $modelPartida = new partida();
+    $partida =  $modelPartida->lstDadosPartidaAmistosoPorIdPartida($idPartida);
+//dd($partida);
+    $modeljoga_em = new joga_em();
+    $jogadoresTimeCasa = $modeljoga_em->lstJogadoresPorTime(
+        $partida[0]['idTimeCasa'],
+        0
+    );
+    
+    $jogadoresTimeVisitante = $modeljoga_em->lstJogadoresPorTime(
+     
+        $partida[0]['idTimeVisitante'],
+        0
+    );
+    $qtdeJogadores = count($jogadoresTimeCasa) >= count($jogadoresTimeVisitante)
+        ? count($jogadoresTimeCasa)
+        : count($jogadoresTimeVisitante);
+    
+    //dd($jogadoresTimeCasa, $jogadoresTimeVisitante);
+    $partida[0]['nome']='amistoso';
+    $pdf = PDF::loadView(
+        'times.comprovantepresencapdf',
+        
+        compact(
+            'partida',
+            'qtdeJogadores',
+            'jogadoresTimeCasa',
+            'jogadoresTimeVisitante'
+        )
+        
+    );
+    
+    return $pdf->setPaper('A4')->stream('comprovantepresencapdf.pdf');
+
+
+}
+
+
+
+
     public function criaramistoso($idTime)
     {  
         

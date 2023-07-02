@@ -93,6 +93,16 @@ Route::get('/local/{idTime}/ativarDesativar', 'App\Http\Controllers\CadastroLoca
 define("TIMES_CONTROLLER", 'App\Http\Controllers\TimeController');
 define("AMISTOSOS_CONTROLLER",'App\Http\Controllers\AmistososController');
 
+Route::get('/amistoso/geraSumulaPdf/{idPartida}', AMISTOSOS_CONTROLLER.'@geraSumulaPdf')
+->name("amistoso.geraPDF");
+Route::get('/amistoso/gerarComprovantePdf/{idPartida}', AMISTOSOS_CONTROLLER.'@gerarComprovantePdf')
+->name("amistoso.gerarcomprovante");
+
+Route::get('/amistoso/comprovantepresencapdf/{idPartida}', AMISTOSOS_CONTROLLER.'@gerarComprovantepresencaPdf')
+->name("amistoso.gerarcomprovantepresenca");
+
+
+
 Route::get('/amistoso/{idTime}', AMISTOSOS_CONTROLLER.'@listarpartidasamistosos')
     ->name("amistoso.listar");
     

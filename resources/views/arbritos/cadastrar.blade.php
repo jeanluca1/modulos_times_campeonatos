@@ -1,7 +1,7 @@
 @extends('times.tela.telas')
 
 @section('parte')
-<title>Jogador</title>
+<title>Arbrito</title>
 
 	<div class="text-left mt-3 mb-4">
 	<div input-group class="card col-9 m-auto" >
@@ -44,7 +44,7 @@
 				id="inTelefone"
 				name='inTelefone'
 				value="{{$arbrito[0]['telefone'] ?? ''}}"
-				placeholder="( ) - ---- ----"
+				placeholder="(  ) - ---- ----"
 			>
 
             <label for="email" class="form-label">Email:</label>
@@ -53,6 +53,7 @@
 				class="text45Left form-control inEmail"
 				id="inEmail"
 				name='inEmail'
+				placeholder=" ------ @Email.com"
 				value="{{$arbrito[0]['email'] ?? ''}}"
 			>
 
@@ -61,9 +62,22 @@
 			<br>
 		<div class="col-8 m-auto">
 			<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button>
+
 		</div>
 		</div>
-</div>
+
 	</form>
+	</form>
+				<form action="{{ route('arbrito.index') }}"   ><a>
+				<div class="col-8 m-auto">
+				<div input-group class=" text-center" >
+					<div class="col-10-auto">
+                <button  class="btn btn-warning col-12 btn-size-120">Cancelar</button>
+					</div>
+				</div>
+				</div>
+            </a></form>
+</div>
+			<br>
 
 @endsection('parte')

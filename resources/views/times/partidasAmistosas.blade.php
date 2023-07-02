@@ -26,10 +26,9 @@
 
             @if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminTime', 'AdminGeral']))
                 
-                <a>
-
+                <a  href="{{route('time.amistoso', ['idTime' => $idTime])}}">
                 
-                    <button class="btn btn-success btn-margin-top-botton" >Adicionar Partida</button>
+                    <button class="btn btn-outline-success btn-margin-top-botton" >Adicionar Partida Amistosa</button>
                 </a>
             @endif
         </div>
@@ -97,9 +96,26 @@
                                         @endif
                                         @if(!in_array($partida['id'], $arquivos))
                                             <a href="{{
-                                                route("campeonato.geraPDF", ['idPartida' => $partida['id']])
+                                                route("amistoso.gerarcomprovante", ['idPartida' => $partida['id']])
                                             }}" target="_blank">
-                                                <button class="btn btn-danger btn-size-160">Gerar PDF/Ñ USAR</button>
+                                                <button class="btn btn-info btn-size-160">Imprimir Marcação</button>
+                                            </a>
+                                        
+                                        @endif
+                                        @if(!in_array($partida['id'], $arquivos))
+                                            <a href="{{
+                                                route("amistoso.gerarcomprovantepresenca", ['idPartida' => $partida['id']])
+                                            }}" target="_blank">
+                                                <button class="btn btn-outline-dark btn-size-160">Gerar Lista Presença</button>
+                                            </a>
+                                        
+                                        @endif
+
+                                        @if(!in_array($partida['id'], $arquivos))
+                                            <a href="{{
+                                                route("amistoso.geraPDF", ['idPartida' => $partida['id']])
+                                            }}" target="_blank">
+                                                <button class="btn btn-danger btn-size-160">Gerar Sumula</button>
                                             </a>
                                         
                                         @endif

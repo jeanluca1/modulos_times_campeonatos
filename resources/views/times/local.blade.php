@@ -22,7 +22,7 @@
 	<div class="card-header text-left">{{ __('Cadastrar Local') }}</div>
 		<div class="col-8 m-auto">
 			@if(isset($id))
-			<form class="row g-3"  method="put"  action="{{ route("local.edita", ['id' => $id]) }}">
+			<form class="row g-2"  method="put"  action="{{ route("local.edita", ['id' => $id]) }}">
 			@else
 				<form class="row g-2"  method="post"  action="{{route("local.salva")}}"  >
 			@endif
@@ -116,16 +116,26 @@
 					>ES</option>-->
 					required
 				</select>
-
+							<br>
 
 			<div input-group>
 				<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button> 
-
-				<button class="btn btn-danger col-12 btn-size-120">Cancelar</button>
+				
 						</div>
 						
 			</div>
 		</form>
+
+		
+				<form action="{{ route('local.index') }}"  ><a>
+				<div class="col-8 m-auto">
+				<div input-group class=" text-center" >
+					<div class="col-10-auto">
+                <button  class="btn btn-warning col-12 btn-size-120">Cancelar</button>
+					</div>
+				</div>
+				</div>
+            </a></form></form>
 	</div>
 	<br>
 @endsection

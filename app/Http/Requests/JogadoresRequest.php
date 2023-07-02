@@ -26,7 +26,7 @@ class JogadoresRequest extends FormRequest
         return [
             'inNome'=>'required',
             'inApelido'=>'required',
-            'inCpf'=>'required',
+            'inCpf'=>'required|unique:jogadores,cpf',
             'inData' => 'required'
         ];
     }
@@ -39,6 +39,7 @@ class JogadoresRequest extends FormRequest
             'inCpf.required' => 'O campo CPF é obrigatório!',
             'inTelefone.required' => 'O campo Telefone é obrigatório!',
             'inData.required' => 'O campo Data de Nascimento é obrigatório!',
+            'inCpf.unique' => 'Esse CPF ja esta sedo usado!',
         ];
     }
 }
