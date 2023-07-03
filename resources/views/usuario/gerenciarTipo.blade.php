@@ -4,9 +4,13 @@
 	<title>Gerenciar Papeis</title>
 	</head>
 	<body>
+		
+	<div class="text-left mt-3 mb-4 card col-9 m-auto" >
+	<div class="card-header text-left">{{ __('Adicionar permissão ao usuario') }}</div>
+		
 		<form action={{route("usuario.validaTipoUsuario")}} method='PUT'>
 		@csrf
-			<div class="text-left mt-3 mb-4">
+			<div class="text-left mt-3 mb-4" >
 				@if(session('mensagem'))
 					<div class="alert alert-danger text-center mt-4 mb-4 p-2">
 						<p>{{session('mensagem')}}</p>
@@ -40,10 +44,11 @@
 						@endforeach
 					</select>
 				</div>
-
+				<br>
 				<div class="col-6 m-auto">
-					<button type="submit" class="btn btn-primary btn-margin-top">Dar Permissão</button>
+					<button type="submit" class="btn btn-primary btn-margin-top">Conceder Permissão</button>
 				</div>
 			</div>
+									</div>
 		</form>
 	@endsection

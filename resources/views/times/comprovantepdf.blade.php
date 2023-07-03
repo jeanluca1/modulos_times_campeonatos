@@ -3,6 +3,7 @@
 <head>
     <meta charset="uft-8">
     <title>Dados da Partida</title>
+   
     <style>
         *{
             font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
@@ -27,10 +28,11 @@
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
+            background-color: #98FB98;
         }
 
         th{
-            background-color: #d3d3d3;
+            background-color: #00FF7F;
             font-size: 14px;
         }
 
@@ -45,19 +47,25 @@
 
     </style>
 </head>
+
 <body>
 
     <table>
+    
+  </div>
         <thead>
         <tr>
                 <th colspan="3" class="tableitem">{{strtoupper(' LMF - Liga Monlevadense de Futebol')}}</th>
             </tr>
-        
+            
             <tr>
                 <th colspan="3" class="tableitem">{{strtoupper('Comprovante Partida Amistosa')}}</th>
             </tr>
             <tr>
-                <th colspan="3" class="tableitem">{{$partida[0]['timeCasa']}}  VS  {{$partida[0]['timeVisitante']}}</th>
+                <td colspan="3" class="tableitem">{{(' ')}}</td>
+            </tr>
+            <tr>
+                <th colspan="3" class="tableitem">{{$partida[0]['timeCasa']}}   __VS__  {{$partida[0]['timeVisitante']}}</th>
             </tr>
             
         </thead>
@@ -65,9 +73,9 @@
         <tbody>
             
             <tr>
-                <td colspan="1" class="tableitem">Data da Partida: {{date( 'd/m/Y' , strtotime($partida[0]['dataHora']))}}</td>
-                <td colspan="1" class="tableitem">Hora: {{substr($partida[0]['dataHora'], 10)}}</td>
-                <td colspan="1" class="tableitem">Local: {{$partida[0]['nome']}}</td>
+                <td colspan="1" class="tableitem"> <b> Data da Partida: {{date( 'd/m/Y' , strtotime($partida[0]['dataHora']))}}</td>
+                <td colspan="1" class="tableitem"> <b> Hora: {{substr($partida[0]['dataHora'], 10)}}</td>
+                <td colspan="1" class="tableitem"><b>Local: {{$partida[0]['nome']}}</td>
                 <tr>
                 
                 <td colspan="1" class="tableitem">Time Mandante: {{$partida[0]['timeCasa']}}</td>
@@ -86,8 +94,9 @@
             
             
         </tbody>
+     
     </table>
-
+    <!--<img width="70%" src="./img/web.png">-->
     
 
 </html>

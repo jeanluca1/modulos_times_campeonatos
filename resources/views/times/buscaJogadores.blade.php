@@ -9,6 +9,10 @@
 			<p>{{session('mensagem')}}</p>
 		</div>
 	@endif
+    <div class="text-left mt-3 mb-4" >
+		<div class="col-8 m-auto">
+            <h1>Gerenciar Jogadores</h1>
+        </div>
     <div class="col-8 m-auto">
                 <div input-group class="card">
                     <div class="card-header text-left">{{ __('Pesquisar') }}</div>

@@ -4,7 +4,10 @@
 <title>Lista Locais</title>
 </head>
 <body>
-
+<div class="text-left mt-3 mb-4" >
+		<div class="col-8 m-auto">
+            <h1>Gerenciar Locais</h1>
+        </div>
 	<div class="text-left mt-3 mb-4" >
         <div class="text-center col-8 m-auto">
             <a href="{{ route('local.cadastrarLocal') }}">

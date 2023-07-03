@@ -13,7 +13,7 @@
 		@endif
 		@csrf
 		
-		<div class="card-header text-left">{{ __('Cadastro Arbrito') }}</div>
+		<div class="card-header text-left">{{ __('Cadastro Árbitro') }}</div>
 		<div class="col-8 m-auto">
 			<label for="nome" class="form-label">Nome:</label>
 			<input
@@ -53,7 +53,7 @@
 				class="text45Left form-control inEmail"
 				id="inEmail"
 				name='inEmail'
-				placeholder=" ------ @Email.com"
+				placeholder=" exemplo@email.com"
 				value="{{$arbrito[0]['email'] ?? ''}}"
 			>
 

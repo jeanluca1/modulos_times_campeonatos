@@ -10,8 +10,8 @@
 		</div>
     @endif
 	<div class="text-left mt-3 mb-4" >
-		<div class="col-8 m-auto">
-            <h1>Gerenciar Equipe Arbritagem</h1>
+		<div class="col-8 m-auto text-center">
+            <h1>Gerenciar Equipe Arbitragem</h1>
         </div>
     </div>
 

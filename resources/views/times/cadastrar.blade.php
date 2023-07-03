@@ -20,9 +20,9 @@
 	</div>
 	@endif
 	
+	<div class="text-left mt-3 mb-4 ">
 	
-	<div input-group class="card col-9 m-auto"  >
-	<div class="text-left mt-3 mb-4">
+	<div input-group class="card col-8 m-auto row g-10"  >
 	
 	
 		@if(!empty($usuario))
@@ -32,6 +32,7 @@
 
 		@else
 			<form class="row g-7" name="formCadastro" id="formCadastro" method="post" action="{{url('usuario')}}">
+				
 			<div class="card-header text-left">{{ __('Cadastrar Usuario') }}</div>
 		@endif
 
@@ -100,7 +101,7 @@
 
 				
 				<div class="btn-size-120">
-					<button type="submit" class="btn btn-primary ">Salvar</button>
+					<button type="submit" class="btn btn-primary btn-size-160 ">Salvar</button>
 				</div>
 			</form>
 
@@ -108,8 +109,9 @@
 				<form class="row g-7" id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
 					@csrf
 					<div class="btn-size-160">
-						<button type="submit" class="btn btn-danger">Sair</button>
+						<button type="submit" class="btn btn-danger btn-size-160">Sair</button>
 					</div>
+				</div>
 				</form>
 				</div>
 			@endif

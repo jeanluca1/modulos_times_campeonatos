@@ -7,7 +7,7 @@
     <div class="col-8 m-auto">
         <div class="text-center mt-3 mb-4">
             <a href="{{route('time.adicionaJogador',['idTime' => $idTime])}}">
-                <button class="btn btn-outline-dark">Adicionar Jogador</button>
+                <button class="btn btn-outline-success">Adicionar Jogador ao Time</button>
                 </a>
                 <a href="{{route('time.amistoso', ['idTime' => $idTime])}} ">
                 
@@ -20,7 +20,7 @@
 
 
     <a  href="{{route('amistoso.listar',['idTime' => $idTime])}}">
-<button class="btn btn-outline-dark">Geregenciar partidas amistosas</button>
+<button class="btn btn-outline-warning">Gerenciar Partidas Amistosas</button>
     
     </a>
     </div>
