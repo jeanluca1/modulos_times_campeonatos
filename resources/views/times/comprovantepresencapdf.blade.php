@@ -56,6 +56,10 @@
                 <th colspan="3" class="tableitem">{{strtoupper('Comprovante Presença Partida Amistosa')}}</th>
             </tr>
             <tr>
+               
+                
+            </tr>
+            <tr>
                 <th colspan="3" class="tableitem">{{$partida[0]['timeCasa']}}  VS  {{$partida[0]['timeVisitante']}}</th>
             </tr>
             
