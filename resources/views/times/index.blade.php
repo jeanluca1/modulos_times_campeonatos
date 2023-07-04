@@ -35,6 +35,8 @@
                     @foreach($times as $time)
                         <?php
                             if ($time['Eexcluido'] == 0) {
+                                $desab=null;
+                                $style = null;
                                 $texto = 'Desativar';
                                 $cor = 'danger';
                                 $rota = 'desativar';
@@ -42,6 +44,8 @@
                                 $texto = 'Ativar';
                                 $cor = 'success';
                                 $rota = 'ativar';
+                                $desab='disabled';
+                                $style='pointer-events: none';
                             }
                         ?>
                         <tr>
@@ -50,8 +54,8 @@
                             <td>{{$time['Eexcluido'] == 0 ? 'Ativo' : 'Inativo'}}</td>
                             <td>
                                 <div input-group>
-                                    <a href="{{ route('time.gerenciar',['idTime' => $time['id']]) }}">
-                                        <button class="btn btn-primary btn-size-120">Gerenciar</button>
+                                    <a style= "<?php echo $style ?>"href="{{ route('time.gerenciar',['idTime' => $time['id']]) }}">
+                                        <button class="btn btn-primary btn-size-120" <?php echo $desab?>>Gerenciar</button>
                                     </a>
                                     <a href="{{ route('time.ativarDesativar',['idTime' => $time['id']]) }}">
                                         <button class="btn btn-{{$cor}} btn-size-120">{{$texto}}</button>

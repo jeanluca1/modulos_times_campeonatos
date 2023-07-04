@@ -41,6 +41,13 @@
             @endif
 
                 @csrf
+                <?php if(isset($amistoso))
+                                {
+                                 $desab='disabled';
+                                } else
+                                
+                                {  $desab='null';
+                                  }  var_dump($desab);  ?>
                 <div class="col-10 m-auto">
                     <div input-group class="card">
                         <div class="card-header text-left">{{ isset($partida) ? 'Editar Partida' : 'Cadastrar Partida' }}</div>
@@ -52,6 +59,7 @@
                                     id="slTimeCasa"
                                     class="form-select"
                                     required
+                                    <?php echo $desab?>
                                 >
                                 <?php if(isset($idTime)){
                                     
@@ -60,8 +68,11 @@
                                     
                                 }
                                 
+                                                                                                
+
+
                                 ?>
-                                    <option value="">Selecione...</option> 
+                                    <option  value="">Selecione...</option> 
                                    
                                     @foreach($times as $time)
                                     <option

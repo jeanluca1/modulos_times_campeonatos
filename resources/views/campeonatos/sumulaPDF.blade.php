@@ -49,6 +49,9 @@
 
     <table>
         <thead>
+        <tr>
+                <th colspan="3" class="tableitem">{{strtoupper(' LMF - Liga Monlevadense de Futebol')}}</th>
+            </tr>
             <tr>
                 <th colspan="3" class="tableitem">{{strtoupper($partida[0]['nome'])}}</th>
             </tr>
@@ -187,7 +190,7 @@
             <tr>
                 <th colspan="30" class="tableitem">Relatório Final da Partida</th>
             </tr>
-            @for($i=0; $i < 9;$i++)
+            @for($i=0; $i < 7;$i++)
             <tr>
                 <td colspan="30" class="tableitem">&nbsp;</td>
             </tr>

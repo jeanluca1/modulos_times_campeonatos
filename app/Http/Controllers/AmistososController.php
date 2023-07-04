@@ -58,13 +58,13 @@ public function geraSumulaPdf($idPartida)
     $modeljoga_em = new joga_em();
     $jogadoresTimeCasa = $modeljoga_em->lstJogadoresPorTime(
         $partida[0]['idTimeCasa'],
-        0
+        0,0
     );
     
     $jogadoresTimeVisitante = $modeljoga_em->lstJogadoresPorTime(
      
         $partida[0]['idTimeVisitante'],
-        0
+        0,0
     );
     $qtdeJogadores = count($jogadoresTimeCasa) >= count($jogadoresTimeVisitante)
         ? count($jogadoresTimeCasa)
@@ -72,6 +72,7 @@ public function geraSumulaPdf($idPartida)
     
     //dd($jogadoresTimeCasa, $jogadoresTimeVisitante);
     $partida[0]['nome']='amistoso';
+   // dd($jogadoresTimeCasa);
     $pdf = PDF::loadView(
         'campeonatos.sumulaPDF',
         compact(
@@ -106,29 +107,29 @@ public function gerarComprovantePdf($idPartida)
 
 
 }
-public function comprovantepresencapdf($idPartida)
+public function gerarComprovantepresencaPdf($idPartida)
 {
-    $ 
+   
     $modelPartida = new partida();
     $partida =  $modelPartida->lstDadosPartidaAmistosoPorIdPartida($idPartida);
 //dd($partida);
     $modeljoga_em = new joga_em();
     $jogadoresTimeCasa = $modeljoga_em->lstJogadoresPorTime(
         $partida[0]['idTimeCasa'],
-        0
+        0,0
     );
     
     $jogadoresTimeVisitante = $modeljoga_em->lstJogadoresPorTime(
-     
+        
         $partida[0]['idTimeVisitante'],
-        0
+        0,0
     );
     $qtdeJogadores = count($jogadoresTimeCasa) >= count($jogadoresTimeVisitante)
         ? count($jogadoresTimeCasa)
         : count($jogadoresTimeVisitante);
     
     //dd($jogadoresTimeCasa, $jogadoresTimeVisitante);
-    $partida[0]['nome']='amistoso';
+   
     $pdf = PDF::loadView(
         'times.comprovantepresencapdf',
         
@@ -161,11 +162,11 @@ public function comprovantepresencapdf($idPartida)
         $grupo=null; 
         $modelArbrito = new arbritos();
         $arbritos = $modelArbrito->lstArbritos(0);
-
+        $amistoso=true;
 
         return view(
             'campeonatos.criaPartidas',
-            compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos' ,'idTime')
+            compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos' ,'idTime' ,'amistoso')
         );
 
     }

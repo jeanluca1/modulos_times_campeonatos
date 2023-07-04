@@ -28,13 +28,14 @@ class TimeController extends Controller
     {
         $modelTime = new time();
 
+
         if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminGeral'])) {
             //$times = $modelTime->sltTimes(); 
             $times = $modelTime->listaTodosTimes();
         } else {
             $times = $modelTime->lstTimesPorIdUsuario(Auth::user()->id);
         }
-       // dd($times);
+       //dd($times);
         return view('times/index', compact('times'));
     }
 
