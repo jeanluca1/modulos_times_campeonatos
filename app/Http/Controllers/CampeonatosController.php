@@ -356,6 +356,16 @@ class CampeonatosController extends Controller
             );
             return view('campeonatos/criarGrupo', compact('idCampeonato', 'dados'));
         }
+
+        if (strlen($request->inNome) > 1) {
+            $dados['inNome'] = $request->inNome;
+            $dados['inNumeroTimes'] = $request->inNumeroTimes;
+            session()->flash(
+                'mensagem',
+                "O nome do grupo deve conter apenas uma letra! Exemplo 'A'."
+            );
+            return view('campeonatos/criarGrupo', compact('idCampeonato', 'dados'));
+        }
         $modelGrupos = new Grupos();
         $modelGrupos->inGrupo($request->inNome, $idCampeonato, $request->inNumeroTimes);
 
