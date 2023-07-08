@@ -327,12 +327,11 @@ class CampeonatosController extends Controller
         $modelTime = new time();
         $todosTimes = $modelTime->sltTimes();
         $modelTimesParticipantes = new timesParticipantes();
-        $participantes = $modelTimesParticipantes->lstTimesParticipantes($idCampeonato);
-
+        $participantes = array_column($modelTimesParticipantes->lstTimesParticipantes($idCampeonato), 'id');
         empty($todosTimes) ? $times = [] : null;
-        
+        $time = [];
         foreach ($todosTimes as $time) {
-            if (!in_array($time, $participantes)) {
+            if (!in_array($time['id'], $participantes)) {
                 $times[] = $time;
             }
         }
