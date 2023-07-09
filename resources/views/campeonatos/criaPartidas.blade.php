@@ -41,13 +41,14 @@
             @endif
 
                 @csrf
-                <?php if(isset($amistoso))
-                                {
-                                 $desab='disabled';
-                                } else
-                                
-                                {  $desab='null';
-                                  }  ;  ?>
+               
+                <?php if(isset($amistoso)) {
+                      $desab='disabled';
+                   } else {
+                      $desab='null';
+                      } 
+                     ?>
+
                 <div class="col-10 m-auto">
                     <div input-group class="card">
                         <div class="card-header text-left">{{ isset($partida) ? 'Editar Partida' : 'Cadastrar Partida' }}</div>
@@ -63,8 +64,9 @@
                                     <?php echo $desab?>
                                 >
                                 <?php if(isset($idTime)){
-                                    
+                                 
                                     $dados['slTimeCasa']=$idTime;
+
 
                                     
                                 }
@@ -217,7 +219,11 @@
                             <input type="hidden" id="hdIdCampeonato" name="hdIdCampeonato" value={{$idCampeonato}}>
                             <input type="hidden" id="hdFormato" name="hdFormato" value={{$formato}}>
                             <input type="hidden" id="hdGrupo" name="hdGrupo" value={{$grupo}}>
-
+                            @if(isset($amistoso) )
+                           
+                            <input type="hidden" id="slTimeCasa" name="slTimeCasa" value={{$idTime}}>
+                            @endif
+                                       
                             
                             <div input-group class="my-auto mx-auto">
                                 <?php $botao = 'Cadastrar'; ?>

@@ -170,11 +170,11 @@ class TimeController extends Controller
         $grupo=null; 
         $modelArbrito = new arbritos();
         $arbritos = $modelArbrito->lstArbritos(0);
-
-
+        $amistoso=true;
+        //dd($idTime);
         return view(
             'campeonatos.criaPartidas',
-            compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos' ,'idTime')
+            compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos' ,'idTime','amistoso')
         );
 
     }

@@ -98,7 +98,7 @@ Route::get('/amistoso/geraSumulaPdf/{idPartida}', AMISTOSOS_CONTROLLER.'@geraSum
 Route::get('/amistoso/gerarComprovantePdf/{idPartida}', AMISTOSOS_CONTROLLER.'@gerarComprovantePdf')
 ->name("amistoso.gerarcomprovante");
 
-Route::get('/amistoso/comprovantepresencapdf/{idPartida}', AMISTOSOS_CONTROLLER.'@gerarComprovantepresencaPdf')
+Route::get('/amistoso/comprovantepresencapdf/{idPartida}/{idtime}', AMISTOSOS_CONTROLLER.'@gerarComprovantepresencaPdf')
 ->name("amistoso.gerarcomprovantepresenca");
 
 

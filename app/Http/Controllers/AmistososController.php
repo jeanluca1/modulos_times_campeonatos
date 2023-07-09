@@ -36,10 +36,14 @@ $arquivos = array_column(
     'id_partida',
     'arquivo',
 );
-//dd($partidas);
+    $modeime=new time();
+    $time=$modeime->lstTimes([$idTime]);
+//dd($time);
 return view(
     'times.partidasAmistosas',
-    compact('partidas' , 'arquivos', 'idTime')
+    compact('partidas' , 'arquivos', 'idTime','time')
+
+
 );
 
 /*return view(
@@ -107,37 +111,32 @@ public function gerarComprovantePdf($idPartida)
 
 
 }
-public function gerarComprovantepresencaPdf($idPartida)
+public function gerarComprovantepresencaPdf($idPartida,$idTime)
 {
-   
+   //dd($idTime);
     $modelPartida = new partida();
+
     $partida =  $modelPartida->lstDadosPartidaAmistosoPorIdPartida($idPartida);
-//dd($partida);
+
     $modeljoga_em = new joga_em();
     $jogadoresTimeCasa = $modeljoga_em->lstJogadoresPorTime(
-        $partida[0]['idTimeCasa'],
+       $idTime,
         0,0
+
     );
-    
-    $jogadoresTimeVisitante = $modeljoga_em->lstJogadoresPorTime(
-        
-        $partida[0]['idTimeVisitante'],
-        0,0
-    );
-    $qtdeJogadores = count($jogadoresTimeCasa) >= count($jogadoresTimeVisitante)
-        ? count($jogadoresTimeCasa)
-        : count($jogadoresTimeVisitante);
-    
-    //dd($jogadoresTimeCasa, $jogadoresTimeVisitante);
+   
+  $modeltime = new time();
+    $time=$modeltime->lstTimes([$idTime]);
+    //dd($time);
    
     $pdf = PDF::loadView(
         'times.comprovantepresencapdf',
         
         compact(
             'partida',
-            'qtdeJogadores',
+            'time',
             'jogadoresTimeCasa',
-            'jogadoresTimeVisitante'
+            
         )
         
     );
@@ -163,7 +162,7 @@ public function gerarComprovantepresencaPdf($idPartida)
         $modelArbrito = new arbritos();
         $arbritos = $modelArbrito->lstArbritos(0);
         $amistoso=true;
-
+        //dd($amistoso);
         return view(
             'campeonatos.criaPartidas',
             compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos' ,'idTime' ,'amistoso')

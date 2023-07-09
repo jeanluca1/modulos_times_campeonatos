@@ -54,7 +54,7 @@
                 
             </tr>
             
-            <th colspan="3" class="tableitem">{{strtoupper(' LISTA DE PRESENÇA')}}-{{$partida[0]['timeCasa']}}</th>
+            <th colspan="3" class="tableitem">{{strtoupper(' LISTA DE PRESENÇA')}}-{{$time[0]['nome']}}</th>
                     
             <tr>
                 <th colspan="3" class="tableitem">{{$partida[0]['timeCasa']}} <a> {{( 'Vs')}} <a> {{$partida[0]['timeVisitante']}}</th>

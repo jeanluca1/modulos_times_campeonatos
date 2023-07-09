@@ -6,7 +6,7 @@
     <body>
         <div class="text-center col-8 m-auto">
             <hr>
-            <h2 class="text-center">Partidas Amistosas</h2>
+            <h2 class="text-center">Partidas Amistosas {{ $time[0]['nome']}}</h2>
             <hr>
             
             @if(session('mensagem'))
@@ -108,7 +108,7 @@
                                         @endif
                                         @if(!in_array($partida['id'], $arquivos))
                                             <a href="{{
-                                                route("amistoso.gerarcomprovantepresenca", ['idPartida' => $partida['id']])
+                                                route("amistoso.gerarcomprovantepresenca", ['idPartida' => $partida['id'],'idtime'=>$idTime])
                                             }}" target="_blank">
                                                 <button class="btn btn-outline-dark btn-size-160">Gerar Lista Presença</button>
                                             </a>
