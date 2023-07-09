@@ -8,7 +8,7 @@
             <hr>
             <h2 class="text-center">Partidas Amistosas</h2>
             <hr>
-
+            
             @if(session('mensagem'))
                 <div class="alert alert-success text-center mt-4 mb-4 p-2">
                     <p>{{session('mensagem')}}</p>
@@ -33,7 +33,10 @@
             @endif
         </div>
         
-        
+                    <div class="text-center">
+                     <a href="">
+            <button type="button" class="btn btn-outline-info btn-sm ">imprimir</button>
+                        </a></div>
 
         <!-- tabelas partidas -->
         <div class="col-8 m-auto" style="overflow-x:auto;">
@@ -63,6 +66,7 @@
                         $propriedade = 'success';
                     }
                 ?>
+                
                 <table class="table text-center">
                     <thead class="thead-dark">
                         <tr>
