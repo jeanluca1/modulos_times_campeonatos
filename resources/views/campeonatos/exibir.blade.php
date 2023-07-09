@@ -191,14 +191,16 @@
 						@endif
 						<tbody class="hide" style="display: none">
 							@for($i = $aux; $i < count($times); $i++)
-								<tr>
-									<th scope="row">{{$arrayTimes[$tabela[$i]['time']]}}</th>
-									<td> {{$tabela[$i]['pontos']}} </td>
-									<td> {{$tabela[$i]['partidas']}} </td>
-									<td> {{$tabela[$i]['vitorias']}} </td>
-									<td> {{$tabela[$i]['empates']}} </td>
-									<td> {{$tabela[$i]['derrotas']}} </td>
-								</tr>
+								@if (isset($tabela[$i]))
+									<tr>
+										<th scope="row">{{$arrayTimes[$tabela[$i]['time']]}}</th>
+										<td> {{$tabela[$i]['pontos']}} </td>
+										<td> {{$tabela[$i]['partidas']}} </td>
+										<td> {{$tabela[$i]['vitorias']}} </td>
+										<td> {{$tabela[$i]['empates']}} </td>
+										<td> {{$tabela[$i]['derrotas']}} </td>
+									</tr>
+								@endif
 							@endfor
 								<tr class="verMenos">
 									<td colspan="6">

@@ -327,12 +327,11 @@ class CampeonatosController extends Controller
         $modelTime = new time();
         $todosTimes = $modelTime->sltTimes();
         $modelTimesParticipantes = new timesParticipantes();
-        $participantes = $modelTimesParticipantes->lstTimesParticipantes($idCampeonato);
-
+        $participantes = array_column($modelTimesParticipantes->lstTimesParticipantes($idCampeonato), 'id');
         empty($todosTimes) ? $times = [] : null;
-        
+        $time = [];
         foreach ($todosTimes as $time) {
-            if (!in_array($time, $participantes)) {
+            if (!in_array($time['id'], $participantes)) {
                 $times[] = $time;
             }
         }
@@ -353,6 +352,16 @@ class CampeonatosController extends Controller
             session()->flash(
                 'mensagem',
                 "Preencha todos os dados corretamente!"
+            );
+            return view('campeonatos/criarGrupo', compact('idCampeonato', 'dados'));
+        }
+
+        if (strlen($request->inNome) > 1) {
+            $dados['inNome'] = $request->inNome;
+            $dados['inNumeroTimes'] = $request->inNumeroTimes;
+            session()->flash(
+                'mensagem',
+                "O nome do grupo deve conter apenas uma letra! Exemplo 'A'."
             );
             return view('campeonatos/criarGrupo', compact('idCampeonato', 'dados'));
         }
