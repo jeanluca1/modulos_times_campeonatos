@@ -34,7 +34,7 @@
         </div>
         
                     <div class="text-center">
-                     <a href="">
+                     <a href="{{route('amistoso.listar',['idTime' => $idTime, 'imprimir'=>1])}}">
             <button type="button" class="btn btn-outline-info btn-sm ">imprimir</button>
                         </a></div>
 
@@ -93,7 +93,7 @@
                                     
                                         @if($partida['id_time_casa']==$idTime )  
                                              <a href="{{
-                                                route("campeonato.editarPartida", ['idPartida' => $partida['id']])
+                                                route("amistoso.editarPartida", ['idTime'=>$idTime,'idPartida' => $partida['id']])
                                             }}">
                                                 <button class="btn btn-primary btn-size-160">Editar Partida</button>
                                             </a>

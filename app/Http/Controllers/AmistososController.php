@@ -20,13 +20,13 @@ class AmistososController extends Controller
     private $objTime;
     
 
-    public function listarpartidasamistosos($idTime)
+    public function listarpartidasamistosos($idTime,$imprimir=null)
     {  
         $modelPartidas=new partida();
 
         $partidas=$modelPartidas-> listaamistosos($idTime);
 
- //dd($mandante);
+ //dd($idTime,$imprimir);
 $times= array_column($partidas, 'id_time_casa');
 $locais= array_column($partidas, 'nome', 'idlocal');
 //$arbritosmodel=new arbritos;   
@@ -39,12 +39,22 @@ $arquivos = array_column(
     $modeime=new time();
     $time=$modeime->lstTimes([$idTime]);
 //dd($time);
+
+if ($imprimir){  //dd('aaaaa');
+
+    $pdf = PDF::loadView('times.agenda',
+    compact('partidas' , 'arquivos', 'idTime','time'));
+    return $pdf->setPaper('A4')->stream('agenda.pdf');
+}else{
+    //dd('aqui');
+
 return view(
+
     'times.partidasAmistosas',
-    compact('partidas' , 'arquivos', 'idTime','time')
+    compact('partidas' , 'arquivos', 'idTime','time'));
+    }
 
 
-);
 
 /*return view(
   'times.partidasAmistosas',
@@ -111,6 +121,7 @@ public function gerarComprovantePdf($idPartida)
 
 
 }
+
 public function gerarComprovantepresencaPdf($idPartida,$idTime)
 {
    //dd($idTime);
@@ -175,7 +186,10 @@ public function gerarComprovantepresencaPdf($idPartida,$idTime)
 
 
     
-
-
+    public function geraragenda($idTime)
+    {
+       dd($idTime);
+        
+    }
 
 }

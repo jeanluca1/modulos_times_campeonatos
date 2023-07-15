@@ -828,7 +828,7 @@ class CampeonatosController extends Controller
     }
 
     public function editaPartida($idPartida, PartidasRequest $request)
-    {
+    {//dd('aqui');
 
         $idCampeonato = $request['hdIdCampeonato'];
         
@@ -956,9 +956,10 @@ class CampeonatosController extends Controller
 
         return view('campeonatos.detalhesPartida', compact('partida', 'eventos'));
     }
-
+//olhar se esta sendo usado
     public function editarResultado($idPartida)
-    {
+    {//dd('aqui');
+        
         $modelSumula = new sumula();
         $eventos =  $modelSumula->lstEventosPorPartida($idPartida);
         
@@ -973,12 +974,29 @@ class CampeonatosController extends Controller
 
         $modelAcao = new acao();
         $acoes = $modelAcao->lstAcao();
-        
+        //dd($idPartida,$eventos,$times,$acoes,$observacao);
         return view('campeonatos.encerraPartida', compact('idPartida', 'eventos', 'times', 'acoes', 'observacao'));
     }
 
     public function validaAlterarResultado(Request $request)
     { //dd($request);
+        if($request->inGolsTimeCasa <0 ||$request->inGolsTimeVisitante<0){
+            $modelPartida = new partida();
+            $dadosPartida = $modelPartida->lstPartida($request->hdPartida);
+            $modelTime =  new time();
+            $timesCasa = $modelTime->lstTimes([
+            $dadosPartida[0]['id_time_casa']
+            ]);
+            $timesVisitante = $modelTime->lstTimes([
+            $dadosPartida[0]['id_time_visitante']
+            ]);
+            $times = array_merge($timesCasa, $timesVisitante);
+            $idPartida=$request->hdPartida;
+            session()->flash('mensagem', 'Não é permitido resultado menor que zero');
+            return view('campeonatos.encerraPartida', compact('idPartida', 'times', 'dadosPartida'));
+
+        }
+
         $modelPartida = new partida();
         $modelPartida->encerraPartida(
             $request['hdPartida'],
@@ -992,6 +1010,7 @@ class CampeonatosController extends Controller
         $partidas = $modelPartida->lstPartidasPorIdCampeonato($campeonato);
 
         if ($idCampeonato==0){ 
+
             $idtime=$request->hdTimeCasa;
           //dd($partida[0]['idTimeCasa']);
             return Redirect("/amistoso/$idtime");
@@ -1114,6 +1133,7 @@ class CampeonatosController extends Controller
      */
     public function removerSumula($idPartida)
     {
+
         $modelArquivo = new Arquivo();
         $aux =  $modelArquivo->lstArquivos([$idPartida]);
         $arquivo = $aux[0]['arquivo'];
@@ -1124,6 +1144,21 @@ class CampeonatosController extends Controller
         $modelPartida = new partida();
         $campeonato = $modelPartida->lstCampeonatoPorPartida($idPartida);
         $idCampeonato = intval($campeonato[0]['id_campeonato']);
-        return redirect()->route('campeonato.partidas', ['idCampeonato' => $idCampeonato]);
+        $partida=$modelPartida->lstDadosPartidaAmistosoPorIdPartida($idPartida);
+
+        if ($idCampeonato==0){ 
+            $idtime=$partida[0]['idTimeCasa'];
+          //dd($partida[0]['idTimeCasa']);
+            return Redirect("/amistoso/$idtime");
+            
+
+        }
+        else
+        {
+          return redirect()->route('campeonato.partidas', ['idCampeonato' => $idCampeonato]);
+
+        }
+
+        
     }
 }

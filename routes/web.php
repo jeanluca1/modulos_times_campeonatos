@@ -100,16 +100,20 @@ Route::get('/amistoso/gerarComprovantePdf/{idPartida}', AMISTOSOS_CONTROLLER.'@g
 
 Route::get('/amistoso/comprovantepresencapdf/{idPartida}/{idtime}', AMISTOSOS_CONTROLLER.'@gerarComprovantepresencaPdf')
 ->name("amistoso.gerarcomprovantepresenca");
+Route::get('/amistoso/agendapdf/{idtime}', AMISTOSOS_CONTROLLER.'@geraragenda')
+->name("amistoso.geraragenda");
 
 
 
-Route::get('/amistoso/{idTime}', AMISTOSOS_CONTROLLER.'@listarpartidasamistosos')
+Route::get('/amistoso/{idTime}/{imprimir?}', AMISTOSOS_CONTROLLER.'@listarpartidasamistosos')
     ->name("amistoso.listar");
     
 Route::get('/time', TIMES_CONTROLLER.'@index')
     ->name("time.index");
     Route::get('/time{idTime}/amistoso', TIMES_CONTROLLER.'@criaramistoso')
     ->name("time.amistoso");
+    Route::get('/time{idTime}/amistoso/{idPartida}', TIMES_CONTROLLER.'@editaramistoso')
+    ->name("amistoso.editarPartida");
     
 
     

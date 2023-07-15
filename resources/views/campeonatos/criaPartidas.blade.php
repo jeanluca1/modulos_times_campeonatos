@@ -99,7 +99,9 @@
                                     required
                                 >
                                     <option value="">Selecione...</option>
+
                                 @foreach($times as $time)
+                               
                                     <option value= {{
                                         $time['id']}} {{isset($dados['slTimeVizitante'])
                                             ?($dados['slTimeVizitante'] == $time['id'] ? 'selected' : '')
@@ -109,7 +111,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                                
+                           
                             <div class="col-6 mx-auto">
                                 <label for="slLocal" class="form-label">Selecione o Local*</label>
                                 <select

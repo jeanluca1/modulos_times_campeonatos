@@ -10,6 +10,8 @@ use App\Models\joga_em;
 use App\Models\jogador;
 use App\Models\arbritos;
 use Auth;
+use App\Models\partida;
+use Carbon\Carbon;
 
 class TimeController extends Controller
 {
@@ -175,6 +177,38 @@ class TimeController extends Controller
         return view(
             'campeonatos.criaPartidas',
             compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos' ,'idTime','amistoso')
+        );
+    
+    }
+    public function editaramistoso($idTime,$partida)
+    {  //dd($idTime, $partida);
+        $modelPartida = new partida();
+        $partida = $modelPartida->lstPartida($partida);
+        $modelTime=new time();
+        $times=$modelTime->sltTimes();
+        $modelLocal = new local();
+        $locais= $modelLocal->lstLocais(true);
+        $idCampeonato=0;
+        $formato=null;
+        $grupo=null; 
+        $modelArbrito = new arbritos();
+        $arbritos = $modelArbrito->lstArbritos(0);
+        $amistoso=true;
+        $dados['slTimeCasa'] = $partida[0]['id_time_casa'];
+        $dados['slTimeVizitante'] = $partida[0]['id_time_visitante'];
+        $dados['slLocal'] = $partida[0]['id_local'];
+        $dados['inData'] =  (new Carbon($partida[0]['dataHora']))->format('Y-m-d');
+        $dados['inHora'] =  (new Carbon($partida[0]['dataHora']))->format('H:i:s');
+        $dados['slArbrito'] = $partida[0]['id_arbrito'];
+        $dados['slAuxiliar1'] = $partida[0]['id_auxiliar1'];
+        $dados['slAuxiliar2'] = $partida[0]['id_auxiliar2'];
+        $dados['slMesario'] = $partida[0]['id_mesario'];
+        
+
+        //dd($dados);
+        return view(
+            'campeonatos.criaPartidas',
+            compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos' ,'idTime','amistoso','dados','partida')
         );
 
     }
