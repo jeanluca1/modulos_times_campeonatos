@@ -274,6 +274,7 @@ class partida extends Model
 ->join('local', 'local.id', '=', 'partidas.id_local')
    
     ->whereRaw('id_campeonato = 0 and( id_time_casa = ? or id_time_visitante = ?)', [$idTime, $idTime])
+    ->orderby('partidas.dataHora')
     ->get()->toArray();
 
      
