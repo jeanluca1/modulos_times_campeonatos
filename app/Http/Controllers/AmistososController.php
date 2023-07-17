@@ -19,6 +19,16 @@ class AmistososController extends Controller
     private $objUsuario;
     private $objTime;
     
+    public function __construct()
+    {
+        $this->objPartida = new partida();
+        $this->objTime = new time();
+        $this->objJogaEm = new joga_em();
+        $this->middleware('auth');
+        $this->middleware(['role:AdminTime|AdminGeral']);
+        
+    }
+    
 
     public function listarpartidasamistosos($idTime,$imprimir=null)
     {  
