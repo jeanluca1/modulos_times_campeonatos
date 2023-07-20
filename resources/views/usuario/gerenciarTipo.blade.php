@@ -12,7 +12,7 @@
 		@csrf
 			<div class="text-left mt-3 mb-4" >
 				@if(session('mensagem'))
-					<div class="alert alert-danger text-center mt-4 mb-4 p-2">
+					<div class="alert alert-success text-center mt-4 mb-4 p-2">
 						<p>{{session('mensagem')}}</p>
 					</div>
 				@endif
