@@ -23,15 +23,15 @@ class TimeController extends Controller
     {
         $this->objTime = new time();
         $this->middleware('auth');
-       // $this->middleware(['role:AdminTime|AdminGeral']);
-        
+       $this->middleware(['role:AdminTime|AdminGeral'])
+       ->except('index');
     }
     public function index()
     {
         $modelTime = new time();
 
 
-        if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminGeral'])) {
+        if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminGeral','Usuario'])) {
             //$times = $modelTime->sltTimes(); 
             $times = $modelTime->listaTodosTimes();
         } else {

@@ -4,7 +4,9 @@
 	<title>Pesquisar Jogadores</title>
 	</head>
 	<body>
+        
     <div class="col-8 m-auto">
+    @if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminTime', 'AdminGeral']))
         <div class="text-center mt-3 mb-4">
             <a href="{{route('time.adicionaJogador',['idTime' => $idTime])}}">
                 <button class="btn btn-outline-success">Adicionar Jogador ao Time</button>
@@ -17,14 +19,14 @@
 
             </a>
        
-
+   
 
     <a  href="{{route('amistoso.listar',['idTime' => $idTime])}}">
 <button class="btn btn-outline-warning">Gerenciar Partidas Amistosas</button>
     
     </a>
     </div>
-
+ @endif
         @if (isset($jogadores))
             <div class="col-8 m-auto">
                 <table class="table text-center">

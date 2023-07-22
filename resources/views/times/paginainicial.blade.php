@@ -2,7 +2,11 @@
 <title>Home</title>
 
 @section('parte')
-
+@if(session('mensagem'))
+                <div class="alert alert-success text-center mt-4 mb-4 p-2">
+                    <p>{{session('mensagem')}}</p>
+                </div>
+            @endif
 <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>

@@ -46,7 +46,7 @@ class CampeonatosController extends Controller
         //$this->middleware(['role:AdminCampeonato']);
         
         $this->middleware(['role:AdminCampeonato|AdminGeral'])
-            ->except('index', 'pesquisar', 'show',  'partidas', 'detalhesPartida','salvaPartida','encerraPartida', 'validaEncerrarPartida','upLoadArquivo','validaEnviarSumula', 'downloadArquivo','validaAlterarResultado','removerSumula');
+            ->except('index', 'pesquisar', 'show',  'partidas', 'detalhesPartida','salvaPartida','encerraPartida', 'validaEncerrarPartida','upLoadArquivo','validaEnviarSumula', 'downloadArquivo','validaAlterarResultado','removerSumula','excluirPartida');
            
 
     }
@@ -716,7 +716,16 @@ class CampeonatosController extends Controller
 
     public function salvaPartida(PartidasRequest $request)
     { //dd($request); 
+        $verifica= $this->vereficarusuario();
         
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
+       
+
         $idCampeonato = $request['hdIdCampeonato'] ==0?null:$request['hdIdCampeonato'];
         $grupo = $request->hdGrupo;
         $dados['slTimeCasa'] = $request['slTimeCasa'];
@@ -797,7 +806,17 @@ class CampeonatosController extends Controller
     }
 
     public function excluirPartida($idPartida)
+
     {
+        $verifica= $this->vereficarusuario();
+        
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
+
         $modelPartida = new partida();
         $campeonato = $modelPartida->lstCampeonatoPorPartida($idPartida);
         $idCampeonato = $campeonato[0]['id_campeonato'];
@@ -908,7 +927,19 @@ class CampeonatosController extends Controller
     }
 
     public function encerraPartida($idPartida)
-    {
+
+    { 
+         $verifica= $this->vereficarusuario();
+        
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
+       
+  
+
         $modelPartida = new partida();
         $dadosPartida = $modelPartida->lstPartida($idPartida);
         $modelTime =  new time();
@@ -924,7 +955,17 @@ class CampeonatosController extends Controller
     }
 
     public function validaEncerrarPartida(Request $request)
+
     {
+        $verifica= $this->vereficarusuario();
+        
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
+
         $modelPartida = new partida();  
         $modelPartida->encerraPartida(
             $request['hdPartida'],
@@ -979,7 +1020,18 @@ class CampeonatosController extends Controller
     }
 
     public function validaAlterarResultado(Request $request)
+
     { //dd($request);
+
+        $verifica= $this->vereficarusuario();
+        
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
+
         if($request->inGolsTimeCasa <0 ||$request->inGolsTimeVisitante<0){
             $modelPartida = new partida();
             $dadosPartida = $modelPartida->lstPartida($request->hdPartida);
@@ -1070,7 +1122,19 @@ class CampeonatosController extends Controller
      * Redireciona para a tela que realiza o upload da sumula
      */
     public function upLoadArquivo($idPartida)
+
     {
+
+
+        $verifica= $this->vereficarusuario();
+        
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
+
         return view('campeonatos.uploadSumula', compact('idPartida'));
     }
 
@@ -1078,7 +1142,17 @@ class CampeonatosController extends Controller
      * Salva o arquivo no diretorio e cria o registro no banco de dados
      */
     public function validaEnviarSumula($idPartida, Request $request,$idTime=null)
+
     {
+        $verifica= $this->vereficarusuario();
+        
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
+
         if (is_null($request->file)) {
             session()->flash('mensagem', 'Selecione um arquivo.');
             return view('campeonatos.uploadSumula', compact('idPartida'));
@@ -1121,6 +1195,15 @@ class CampeonatosController extends Controller
      */
     public function downloadArquivo($idPartida)
     {
+        $verifica= $this->vereficarusuario();
+        
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
+
         $modelArquivo = new Arquivo();
         $aux =  $modelArquivo->lstArquivos([$idPartida]);
         $arquivo = $aux[0]['arquivo'];
@@ -1133,6 +1216,15 @@ class CampeonatosController extends Controller
      */
     public function removerSumula($idPartida)
     {
+
+        $verifica= $this->vereficarusuario();
+        
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
 
         $modelArquivo = new Arquivo();
         $aux =  $modelArquivo->lstArquivos([$idPartida]);
@@ -1161,4 +1253,22 @@ class CampeonatosController extends Controller
 
         
     }
+
+    public function vereficarusuario(){
+        
+        if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminCampeonato', 'AdminGeral', 'AdminTime'])){
+            
+        return true; 
+    }else{
+        
+
+            return false;
+
+        }
+
+
+
+    }
+
+
 }

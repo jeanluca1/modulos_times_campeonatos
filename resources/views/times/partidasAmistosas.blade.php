@@ -140,12 +140,16 @@
                                             <button class="btn btn-success btn-size-160">{{$btn}}</button>
                                         </a>
                                         @endif
-                                    @endif
+                                  
                                     @if ($partida['status'] == 1)
                                         <a href="{{$rotaSumula}}">
                                             <button class="btn btn-warning btn-size-160">{{$textoSumula}}</button>
                                         </a>
                                     @endif
+                                    @endif
+                                    
+
+
                                 </div>
                             </td>
                         </tr>

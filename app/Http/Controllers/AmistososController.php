@@ -25,8 +25,8 @@ class AmistososController extends Controller
         $this->objTime = new time();
         $this->objJogaEm = new joga_em();
         $this->middleware('auth');
-        $this->middleware(['role:AdminTime|AdminGeral']);
-        
+        $this->middleware(['role:AdminTime|AdminGeral'])
+        ->except('index','listarpartidasamistosos');
     }
     
 

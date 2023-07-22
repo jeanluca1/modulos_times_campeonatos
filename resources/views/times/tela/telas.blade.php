@@ -31,16 +31,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
-          <li class="nav-item">
+          <li class="nav-item">@if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminTime', 'AdminGeral', 'AdminCampeonato']))
             <a class="nav-link" href="{{ route('local.index') }}">Local</a>
-          </li>
+          </li>@endif
           <li class="nav-item">
             <a class="nav-link"   href="{{ route('time.index') }}" >  Times</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item">@if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminTime', 'AdminGeral', 'AdminCampeonato']))
             <a class="nav-link"  href="{{ route('jogador.index') }}"  > Jogador</a>
-          </li>
-          @if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminGeral']))
+          </li> @endif
+          @if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminGeral','AdminTime']))
 		      <li class="nav-item">
             <a class="nav-link"  href="{{ route('arbrito.index') }}">Arbitragem</a>
           </li>
