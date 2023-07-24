@@ -198,7 +198,7 @@ public function gerarComprovantepresencaPdf($idPartida,$idTime)
     
     public function geraragenda($idTime)
     {
-       dd($idTime);
+      // dd($idTime);
         
     }
 

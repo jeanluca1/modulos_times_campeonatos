@@ -46,7 +46,7 @@ class CampeonatosController extends Controller
         //$this->middleware(['role:AdminCampeonato']);
         
         $this->middleware(['role:AdminCampeonato|AdminGeral'])
-            ->except('index', 'pesquisar', 'show',  'partidas', 'detalhesPartida','salvaPartida','encerraPartida', 'validaEncerrarPartida','upLoadArquivo','validaEnviarSumula', 'downloadArquivo','validaAlterarResultado','removerSumula','excluirPartida');
+            ->except('index', 'pesquisar', 'show',  'partidas', 'detalhesPartida','salvaPartida','encerraPartida', 'validaEncerrarPartida','upLoadArquivo','validaEnviarSumula', 'downloadArquivo','validaAlterarResultado','removerSumula','excluirPartida','editarPartida');
            
 
     }
@@ -667,6 +667,15 @@ class CampeonatosController extends Controller
 
     public function editarPartida($idPartida, $grupo = null)
     {
+        $verifica= $this->vereficarusuario();
+        
+        if( !$verifica) {
+            session()->flash('mensagem', 'Voce não possui permissão para realizar essa operação!');
+            return redirect()->route(
+                'PaginaInicial'
+                );
+        }
+
         $modelPartida = new partida();
         $partida = $modelPartida->lstPartida($idPartida);
         //dd($partida);
