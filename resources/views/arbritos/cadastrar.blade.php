@@ -61,6 +61,7 @@
 		<div>
 			<br>
 		<div class="col-8 m-auto">
+		<div input-group class=" text-center" >
 			<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button>
 
 		</div>

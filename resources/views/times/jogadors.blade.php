@@ -81,7 +81,8 @@
 				required
 			>
 			<br>
-			<div class="col-10-auto">
+			<div class="col-10 m-auto">
+			<div input-group class=" text-center" >
 			<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button>  
 			
 			
@@ -91,7 +92,7 @@
 			
 	</form>
 				<form action="{{ route('jogador.index') }}"  ><a>
-				<div class="col-9 m-auto">
+				<div class="col-10 m-auto">
 				<div input-group class=" text-center" >
 					<div class="col-10-auto">
                 <button  class="btn btn-warning col-12 btn-size-120">Cancelar</button>

@@ -119,6 +119,8 @@
 							<br>
 
 			<div input-group>
+			<div input-group class=" text-center" >
+			<div class="col-12 m-auto">
 				<button type="submit" class="btn btn-primary col-12 btn-size-120">Salvar</button> 
 				
 						</div>
@@ -128,7 +130,7 @@
 
 		
 				<form action="{{ route('local.index') }}"  ><a>
-				<div class="col-8 m-auto">
+				<div class="col-12 m-auto">
 				<div input-group class=" text-center" >
 					<div class="col-10-auto">
                 <button  class="btn btn-warning col-12 btn-size-120">Cancelar</button>
