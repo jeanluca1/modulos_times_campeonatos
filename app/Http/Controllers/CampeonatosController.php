@@ -46,7 +46,7 @@ class CampeonatosController extends Controller
         //$this->middleware(['role:AdminCampeonato']);
         
         $this->middleware(['role:AdminCampeonato|AdminGeral'])
-            ->except('index', 'pesquisar', 'show',  'partidas', 'detalhesPartida','salvaPartida','encerraPartida', 'validaEncerrarPartida','upLoadArquivo','validaEnviarSumula', 'downloadArquivo','validaAlterarResultado','removerSumula','excluirPartida','editarPartida');
+            ->except('index', 'pesquisar', 'show',  'partidas', 'detalhesPartida','salvaPartida','encerraPartida', 'validaEncerrarPartida','upLoadArquivo','validaEnviarSumula', 'downloadArquivo','validaAlterarResultado','removerSumula','excluirPartida','editarPartida','editaPartida');
            
 
     }
