@@ -7,25 +7,21 @@
         
     <div class="col-8 m-auto">
     @if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['AdminTime', 'AdminGeral']))
+    <div class="col-8 m-auto">
         <div class="text-center mt-3 mb-4">
             <a href="{{route('time.adicionaJogador',['idTime' => $idTime])}}">
                 <button class="btn btn-outline-success">Adicionar Jogador ao Time</button>
-                </a>
-                <a href="{{route('time.amistoso', ['idTime' => $idTime])}} ">
+           </a>
+            <a href="{{route('time.amistoso', ['idTime' => $idTime])}} ">
                 
-                <button class="btn btn-outline-primary">Adicionar Partida Amistosa </button>
+                <button class="btn btn-outline-primary">Adicionar Partida Amistosa </button> 
                 
-                
-
             </a>
        
-   
-
-    <a  href="{{route('amistoso.listar',['idTime' => $idTime])}}">
-<button class="btn btn-outline-warning">Gerenciar Partidas Amistosas</button>
-    
+         <a  href="{{route('amistoso.listar',['idTime' => $idTime])}}">
+        <button class="btn btn-outline-warning ">Gerenciar Partidas Amistosas</button>
     </a>
-    </div>
+        </div></div>
  @endif
         @if (isset($jogadores))
             <div class="col-8 m-auto">

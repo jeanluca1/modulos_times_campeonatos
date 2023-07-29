@@ -80,7 +80,7 @@
                                 @if(!is_null(Auth::user()) && Auth::user()->hasAnyRole(['Usuario']))
                                 <div>
                                 <a href="{{route('amistoso.listar',['idTime' => $time['id']])}}">
-                                        <button class="btn btn-primary btn-size-120"  >Ver partida</button>
+                                        <button class="btn btn-primary btn-size-120"  >Ver partidas</button>
                                     </a>
 
                                 </div>

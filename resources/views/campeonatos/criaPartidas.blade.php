@@ -53,7 +53,7 @@
                     <div input-group class="card">
                         <div class="card-header text-left">{{ isset($partida) ? 'Editar Partida' : 'Cadastrar Partida' }}</div>
 
-                            <div class="col-6 mx-auto">
+                            <div class="col-9 mx-auto">
                                 <label for="slTimeCasa" class="form-label">Selecione o Time mandante*</label>
                                 <select
                                     name="slTimeCasa"
@@ -90,7 +90,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-6 mx-auto">
+                            <div class="col-9 mx-auto">
                                 <label for="slTimeVizitante" class="form-label">Selecione o Time visitante*</label>
                                 <select
                                     name="slTimeVizitante"
@@ -112,7 +112,7 @@
                                 </select>
                             </div>
                            
-                            <div class="col-6 mx-auto">
+                            <div class="col-9 mx-auto">
                                 <label for="slLocal" class="form-label">Selecione o Local*</label>
                                 <select
                                     name="slLocal"
@@ -132,7 +132,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-6 mx-auto">
+                            <div class="col-9 mx-auto">
                                 <label for="inData" class="form-label">Data*</label>
                                 <input
                                 type="date"
@@ -145,7 +145,7 @@
                                 >
                             </div>
 
-                            <div class="col-6 mx-auto">
+                            <div class="col-9 mx-auto">
                                 <label for="inHora" class="form-label">Hora*</label>
                                 <input
                                     type="text"
@@ -158,7 +158,7 @@
                                 >
                             </div>
 
-                            <div class="col-6 mx-auto">
+                            <div class="col-9 mx-auto">
                                 <label for="slArbrito" class="form-label">Selecione o Arbrito</label>
                                 <select name="slArbrito"  id="slArbrito" class="form-select">
                                     <option value="0" selected>Selecione...</option>
@@ -173,7 +173,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-6 mx-auto">
+                            <div class="col-9 mx-auto">
                                 <label for="slAuxiliar1" class="form-label">Selecione o Primeiro Auxiliar</label>
                                 <select name="slAuxiliar1"  id="slAuxiliar1" class="form-select">
                                     <option value="0" selected>Selecione...</option>
@@ -188,7 +188,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-6 mx-auto">
+                            <div class="col-9 mx-auto">
                                 <label for="slAuxiliar2" class="form-label">Selecione o Segundo Auxiliar</label>
                                 <select name="slAuxiliar2"  id="slAuxiliar2" class="form-select">
                                     <option value="0" selected>Selecione...</option>
@@ -203,7 +203,7 @@
                                 </select>
                             </div>
 
-                            <div class="col-6 mx-auto">
+                            <div class="col-9 mx-auto">
                                 <label for="slMesario" class="form-label">Selecione o Mesário</label>
                                 <select name="slMesario"  id="slMesario" class="form-select">
                                     <option value="0" selected>Selecione...</option>
@@ -227,7 +227,7 @@
                             @endif
                                        
                             
-                            <div input-group class="my-auto mx-auto">
+                            <div input-group class="my-auto  mx-auto">
                                 <?php $botao = 'Cadastrar'; ?>
                                 @if(isset($partida) && $partida[0]['status'] == 0)
                                 <?php $botao = 'Salvar'; ?>
@@ -240,6 +240,7 @@
                     </div>
                 </div>
             </form>
+            <br>
         </div>
 
 @endsection

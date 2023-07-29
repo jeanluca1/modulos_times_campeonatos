@@ -2,7 +2,7 @@
 <html lang="pt-BR" dir="ltr">
 <head>
     <meta charset="uft-8">
-    <title>Sumula PDF</title>
+    <title>COMPROVANTE PRESENÇA</title>
     <style>
         *{
             font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
@@ -86,7 +86,7 @@
     <table>
         <thead>
             <tr>
-                <th colspan="30" class="tableitem">{{$partida[0]['timeCasa']}}</th>
+                <th colspan="30" class="tableitem">{{$time[0]['nome']}}</th>
                 
             </tr>
         </thead>

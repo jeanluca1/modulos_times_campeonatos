@@ -13,9 +13,12 @@
 	<div input-group class="card" >
 
 		@if(!empty($id))
+		
 			<form name="formEdit" id="formEdit" method="put" action="{{ route("jogador.edita", ['id' => $id, 'time' => $time]) }}">
 				@method('PUT')
+
 		@else
+		
 			<form name="formCadastro" id="formCadastro" method="post" action="{{route("jogador.salva")}}">
 		@endif
 		@csrf
@@ -91,7 +94,7 @@
 
 			
 	</form>
-				<form action="{{ route('jogador.index') }}"  ><a>
+				 <form action="{{ route('jogador.index') }}"  ><a>
 				<div class="col-10 m-auto">
 				<div input-group class=" text-center" >
 					<div class="col-10-auto">
@@ -102,4 +105,5 @@
             </a></form>
 	</div>
 <br>
+</div>
 @endsection('parte')

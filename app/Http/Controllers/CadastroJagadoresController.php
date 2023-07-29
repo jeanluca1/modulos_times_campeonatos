@@ -31,7 +31,7 @@ class CadastroJagadoresController extends Controller
     }
 
     public function cadastrar($idJogador = null, $time = 0)
-    {
+    { //dd('la2');
         $modelJogador = new jogador();
         $jogador = $modelJogador->lstJogadores([$idJogador]);
         $id = null;
@@ -47,7 +47,7 @@ class CadastroJagadoresController extends Controller
     }
 
     public function store(JogadoresRequest $request)
-    {
+    { //dd('oi');
         $cadastro=$this->objJogador->create([
             'nome'=>$request->inNome,
             'apelido'=>$request->inApelido,
@@ -62,7 +62,7 @@ class CadastroJagadoresController extends Controller
     }
 
     public function update(JogadoresRequest $request, $id, $time = false)
-    {
+    { //dd('aqui');
         $cadastro=$this->objJogador->where(['id'=>$id])->update([
             'nome'=>$request->inNome,
             'apelido'=>$request->inApelido,
@@ -71,6 +71,7 @@ class CadastroJagadoresController extends Controller
             'nacimento'=>$request->inData,
             'Eexcluido'=>0
         ]);
+        
         if ($cadastro) {
             if ($time) {
                 return redirect()->route('time.gerenciar', [

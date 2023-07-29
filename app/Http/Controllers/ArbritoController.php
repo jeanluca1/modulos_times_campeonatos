@@ -52,7 +52,7 @@ class ArbritoController extends Controller
     }
 
     public function update(ArbritosRequest $request, $id)
-    {
+    { 
         $cadastro=$this->objArbrito->where(['id'=>$id])->update([
             'nome'=>$request->inNome,
             'cpf'=>$request->inCpf,

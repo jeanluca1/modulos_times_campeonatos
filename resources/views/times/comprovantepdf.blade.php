@@ -2,7 +2,7 @@
 <html lang="pt-BR" dir="ltr">
 <head>
     <meta charset="uft-8">
-    <title>Dados da Partida</title>
+    <title>Comprovante Partida Amistosa</title>
    
     <style>
         *{
