@@ -748,6 +748,11 @@ class CampeonatosController extends Controller
         $dados['slMesario'] = $request['slMesario'];
         //dd($request);
         if ($request['slTimeCasa'] == $request['slTimeVizitante']) {
+            session()->flash('mensagem', 'Os times selecionados não podem ser os mesmos!');
+            if ($idCampeonato==0){ 
+
+                return Redirect("/amistoso/$request->slTimeCasa");
+            }
             
             $modelTimes = new timesParticipantes();
             $times = $modelTimes->lstTimesParticipantes(array($idCampeonato));
@@ -763,7 +768,7 @@ class CampeonatosController extends Controller
             $formato = ($aux[0]->formato);
 
 
-            session()->flash('mensagem', 'Os times selecionados não podem ser os mesmos!');
+            
             /*return redirect()->route(
                 'campeonato.criarPartida',
                 ['idCampeonato' => $idCampeonato, 'idgrupo' => $request->hdGrupo]
@@ -874,7 +879,12 @@ class CampeonatosController extends Controller
         $modelPartida = new partida();
         $partida = $modelPartida->lstPartida($idPartida);
 
-        if ($request['slTimeCasa'] == $request['slTimeVizitante']) {
+        if ($request['slTimeCasa'] == $request['slTimeVizitante']) { 
+            session()->flash('mensagem', 'Os times selecionados não podem ser os mesmos!');
+            if ($idCampeonato==0){ 
+
+                return Redirect("/amistoso/$request->slTimeCasa");
+            }
             $modelTimes = new timesParticipantes();
             $times = $modelTimes->lstTimesParticipantes(array($idCampeonato)); 
         
@@ -888,12 +898,15 @@ class CampeonatosController extends Controller
             $aux = $modelCampeonato->lstCampeonatosPorId([$idCampeonato]);
             $formato = ($aux[0]->formato);
 
-            session()->flash('mensagem', 'Os times selecionados não podem ser os mesmos!');
+            
             //return view('campeonatos.criaPartidas', compact('idCampeonato','times', 'locais', 'dados', 'partida'));
-            return view(
-                'campeonatos.criaPartidas',
-                compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos', 'dados', 'partida')
-            );
+        
+                return view(
+                    'campeonatos.criaPartidas',
+                    compact('idCampeonato', 'times', 'locais', 'formato', 'grupo', 'arbritos', 'dados', 'partida')
+                );
+            
+
         } else {
             $this->validate($request, ['inHora' => new ValidaHora]);
             $dataHora = $this->trataDataHora($request['inData'], $request['inHora']);

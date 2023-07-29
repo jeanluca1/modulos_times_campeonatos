@@ -80,5 +80,6 @@
             </a></form>
 </div>
 			<br>
+</div>
 
 @endsection('parte')
