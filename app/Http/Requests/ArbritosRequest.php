@@ -24,8 +24,9 @@ class ArbritosRequest extends FormRequest
     public function rules()
     {
         return [
-            'inNome'=>'required',
-            'inCpf'=>'required',
+        'inNome'=>'required',
+        'inCpf'=>'required|unique:arbitro,cpf',
+    
         ];
     }
 
@@ -34,6 +35,7 @@ class ArbritosRequest extends FormRequest
         return [
             'inNome.required' => 'O campo Nome é obrigatório!',
             'inCpf.required' => 'O campo CPF é obrigatório!',
+            'inCpf.unique' => 'Esse CPF ja esta sedo usado!',
         ];
     }
 }

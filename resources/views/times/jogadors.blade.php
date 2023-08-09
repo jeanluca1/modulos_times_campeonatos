@@ -9,6 +9,12 @@
 			<p>{{session('mensagem')}}</p>
 		</div>
 	@endif
+	@foreach ($errors->all() as $error)
+	<div class="alert alert-danger text-center mt-4 mb-4 p-2">
+			<p>{{$error }}</p>
+		</div>
+   
+@endforeach
 	<div class="col-10 m-auto">
 	<div input-group class="card" >
 

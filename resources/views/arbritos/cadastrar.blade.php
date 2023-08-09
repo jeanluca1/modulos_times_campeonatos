@@ -2,6 +2,18 @@
 
 @section('parte')
 <title>Arbrito</title>
+<div class="text-left mt-3 mb-4">
+	@if(session('mensagem'))
+		<div class="alert alert-danger text-center mt-4 mb-4 p-2">
+			<p>{{session('mensagem')}}</p>
+		</div>
+	@endif
+	@foreach ($errors->all() as $error)
+	<div class="alert alert-danger text-center mt-4 mb-4 p-2">
+			<p>{{$error }}</p>
+		</div>
+   
+@endforeach
 
 	<div class="text-left mt-3 mb-4">
 	<div input-group class="card col-9 m-auto" >

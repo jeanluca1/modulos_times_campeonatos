@@ -29,16 +29,19 @@ class ArbritoController extends Controller
 
     public function cadastrar($id = null)
     {
+
         if (!is_null($id)) {
             $modelArbrito = new arbritos();
             $arbrito = $modelArbrito->lstArbritosPorId($id);
             return view('arbritos/cadastrar', compact('id', 'arbrito'));
         }
-        return view('arbritos/cadastrar');
-    }
-
+        
+        return redirect()->route('arbritos/cadastrar');
+        
+        }
+    
     public function store(ArbritosRequest $request)
-    {
+    {if (validaCPF($request->inCpf)){
         $cadastro=$this->objArbrito->create([
             'nome'=>$request->inNome,
             'cpf'=>$request->inCpf,
@@ -49,6 +52,12 @@ class ArbritoController extends Controller
         if ($cadastro) {
             return redirect()->route('arbrito.index');
         }
+    }else{
+        session()->flash(
+            'mensagem',
+            "Digite um CPF valido"
+        );
+    }
     }
 
     public function update(ArbritosRequest $request, $id)

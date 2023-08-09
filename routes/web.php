@@ -151,7 +151,7 @@ Route::get('/jogador', 'App\Http\Controllers\CadastroJagadoresController@index')
 Route::post('/jogador/salva/', 'App\Http\Controllers\CadastroJagadoresController@store')
     ->name("jogador.salva");
 
-Route::get('/jogador/cadastrar/{idJogador?}/{time?}', 'App\Http\Controllers\CadastroJagadoresController@cadastrar')
+Route::get('/jogador/cadastrar/{idJogador?}/{time?}/{recuperarDados?}', 'App\Http\Controllers\CadastroJagadoresController@cadastrar')
     ->name("jogador.cadastrar");
 
 Route::get('/jogador/edita/{id}/{time?}/', 'App\Http\Controllers\CadastroJagadoresController@update')

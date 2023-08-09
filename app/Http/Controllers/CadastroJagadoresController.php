@@ -48,21 +48,38 @@ class CadastroJagadoresController extends Controller
 
     public function store(JogadoresRequest $request)
     { //dd('oi');
-        $cadastro=$this->objJogador->create([
-            'nome'=>$request->inNome,
-            'apelido'=>$request->inApelido,
-            'cpf'=>$request->inCpf,
-            'telefone'=>$request->inTelefone,
-            'nacimento'=>$request->inData,
-            'Eexcluido'=>0
-        ]);
-        if ($cadastro) {
-            return redirect('jogador');
+        if (validaCPF($request->inCpf)){
+
+            $cadastro=$this->objJogador->create([
+                'nome'=>$request->inNome,
+                'apelido'=>$request->inApelido,
+                'cpf'=>$request->inCpf,
+                'telefone'=>$request->inTelefone,
+                'nacimento'=>$request->inData,
+                'Eexcluido'=>0
+            ]);
+            if ($cadastro) {
+                return redirect('jogador');
+            }
+        }else{
+            session()->flash(
+                'mensagem',
+                "Digite um CPF valido"
+            );
+
+            return redirect()->route('jogador.cadastrar', [
+                
+                
+            ]);
+            
+            
+
         }
     }
 
     public function update(JogadoresRequest $request, $id, $time = false)
     { //dd('aqui');
+        if (validaCPF($request->inCpf)){
         $cadastro=$this->objJogador->where(['id'=>$id])->update([
             'nome'=>$request->inNome,
             'apelido'=>$request->inApelido,
@@ -79,7 +96,22 @@ class CadastroJagadoresController extends Controller
                 ]);
                 return redirect('jogador');
             }
-            return redirect('jogador');
+
+        }else{
+            session()->flash(
+                'mensagem',
+                "Digite um CPF valido"
+            );
+
+            return redirect()->route('jogador.cadastrar', [
+                
+                
+            ]);
+            
+            
+
+        }
+            
         }
     }
 
