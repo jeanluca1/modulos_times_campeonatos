@@ -89,7 +89,7 @@
 					id="inComplemento"
 					name="inComplemento"
 					placeholder="Apartamento, quadra..."
-					value={{$local[0]['complemento'] ?? ''}}
+					value= "{{isset($local)? $local[0]['complemento']:''}}"
 				>
 
 				<label for="cidade" class="form-label">Cidade:</label>

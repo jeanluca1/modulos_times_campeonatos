@@ -53,6 +53,7 @@
                                     type="text"
                                     class="form-control cpf"
                                     name="cpf" value="{{ old('cpf') }}"
+                                    class="form-control @error('cpf') is-invalid @enderror"
                                     required autocomplete="cpf"
                                 >
 

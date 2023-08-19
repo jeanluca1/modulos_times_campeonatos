@@ -158,6 +158,12 @@ return [
         'password' => [
             'min' => 'A senha deve conter pelo menos :min caracteres',
         ],
+        'cpf'=>[
+            'cpf'=>'CPF invalido',
+        ],
+        'inCpf'=>[
+            'cpf'=>'CPF inválido'
+        ]
     ],
 
     /*

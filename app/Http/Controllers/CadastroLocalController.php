@@ -61,7 +61,7 @@ class CadastroLocalController extends Controller
     }
 
     public function update(LocalRequest $request, $id)
-    {
+    { 
         $this->objLocal->where(['id'=>$id])->update([
             'nome'=>$request->inNome,
             'endereco'=>$request->inEndereco,

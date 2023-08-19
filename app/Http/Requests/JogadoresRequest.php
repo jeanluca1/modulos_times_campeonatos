@@ -3,9 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Rule;
 class JogadoresRequest extends FormRequest
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -22,12 +23,13 @@ class JogadoresRequest extends FormRequest
      * @return array<string, mixed>
      */
     public function rules()
-    {
+    { 
         return [
             'inNome'=>'required',
             'inApelido'=>'required',
-            'inCpf'=>'required|unique:jogadores,cpf',
+            'inCpf'=>'required|unique:jogadores,cpf|cpf',
             'inData' => 'required'
+
         ];
     }
 
@@ -40,6 +42,7 @@ class JogadoresRequest extends FormRequest
             'inTelefone.required' => 'O campo Telefone é obrigatório!',
             'inData.required' => 'O campo Data de Nascimento é obrigatório!',
             'inCpf.unique' => 'Esse CPF ja esta sedo usado!',
+            'inCpf.cpf'=>'CPF Inválido'
         ];
     }
 }

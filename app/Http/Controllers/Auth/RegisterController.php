@@ -72,11 +72,12 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required_without:telefone', 'nullable', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'cpf' => ['required', 'string', 'min:14', 'max:14', 'unique:users'],
+            'cpf' => ['required', 'string', 'min:14', 'max:14', 'unique:users','cpf'],            
             'telefone' => ['required_without:email', 'nullable', 'string', 'min:0', 'max:15', 'unique:users']
         ]);
-
+        $usuario=
         User::create([
+
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
@@ -84,6 +85,10 @@ class RegisterController extends Controller
             'telefone' => $request['telefone'],
             'tipo' => 1
         ]);
+        $usuario->assignRole(1); 
+        //dd($usuario->id);
+
         return redirect()->route('usuario.pesquisarPapel');
     }
+
 }

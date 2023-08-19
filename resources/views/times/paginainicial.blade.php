@@ -43,7 +43,7 @@
           <div class="carousel-caption text-end">
             <h1>Amistoso</h1>
             <p>Vejas os amistosos realizados pela LMF</p>
-            <p><a class="btn btn-lg btn-primary btn-size-90-10-margin" href="#">Ir</a></p>
+            <p><a class="btn btn-lg btn-primary btn-size-90-10-margin" href="{{ route('time.index') }}">Ir</a></p>
           </div>
         </div>
       </div>

@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\jogador;
 use App\Http\Requests\JogadoresRequest;
 use Illuminate\Http\Request;
-
+use Illuminate\Validation\Rule;
 class CadastroJagadoresController extends Controller
 {
     //
@@ -77,8 +77,15 @@ class CadastroJagadoresController extends Controller
         }
     }
 
-    public function update(JogadoresRequest $request, $id, $time = false)
+    public function update(Request $request, $id, $time = false)
     { //dd('aqui');
+        $request->validate([
+            'inNome' => ['required'],
+            'inApelido' => ['required'],
+            'inData' => ['required'],
+            'inCpf' => ['required','cpf',Rule::unique('jogadores','cpf')->ignore($id)],            
+           
+        ]);
         if (validaCPF($request->inCpf)){
         $cadastro=$this->objJogador->where(['id'=>$id])->update([
             'nome'=>$request->inNome,
@@ -94,9 +101,9 @@ class CadastroJagadoresController extends Controller
                 return redirect()->route('time.gerenciar', [
                     'idTime' => $time
                 ]);
-                return redirect('jogador');
             }
-
+            
+            return redirect('jogador');
         }else{
             session()->flash(
                 'mensagem',

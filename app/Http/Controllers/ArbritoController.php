@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\arbritos;
 use App\Http\Requests\ArbritosRequest;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Auth;
 
 class ArbritoController extends Controller
@@ -29,14 +30,14 @@ class ArbritoController extends Controller
 
     public function cadastrar($id = null)
     {
-
+        
         if (!is_null($id)) {
             $modelArbrito = new arbritos();
             $arbrito = $modelArbrito->lstArbritosPorId($id);
             return view('arbritos/cadastrar', compact('id', 'arbrito'));
         }
         
-        return redirect()->route('arbritos/cadastrar');
+        return view('arbritos/cadastrar');
         
         }
     
@@ -60,8 +61,14 @@ class ArbritoController extends Controller
     }
     }
 
-    public function update(ArbritosRequest $request, $id)
-    { 
+    public function update(Request $request, $id)
+    { $request->validate([
+        'inNome' => ['required'],
+        'inTelefone' => ['required'],
+        'inEmail' => ['required'],
+        'inCpf' => ['required','cpf',Rule::unique('arbitro','cpf')->ignore($id)],            
+       
+    ]);
         $cadastro=$this->objArbrito->where(['id'=>$id])->update([
             'nome'=>$request->inNome,
             'cpf'=>$request->inCpf,
