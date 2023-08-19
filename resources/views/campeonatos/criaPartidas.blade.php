@@ -146,14 +146,14 @@
                             </div>
 
                             <div class="col-9 mx-auto">
-                                <label for="inHora" class="form-label">Hora*</label>
+                                <label for="inHora" class="form-label">Hora ( --:--:-- ) *</label>
                                 <input
                                     type="text"
                                     class="form-control hora"
                                     name="inHora"
                                     id="inHora"
                                     value="{{isset($dados['inHora']) ? $dados['inHora'] : null}}"
-                                    placeholder="Hora de início"
+                                    placeholder="Horário de Início: Formato (00:00:00) "
                                     required
                                 >
                             </div>
