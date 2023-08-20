@@ -159,7 +159,7 @@
                             </div>
 
                             <div class="col-9 mx-auto">
-                                <label for="slArbrito" class="form-label">Selecione o Arbrito</label>
+                                <label for="slArbrito" class="form-label">Selecione o Árbitro</label>
                                 <select name="slArbrito"  id="slArbrito" class="form-select">
                                     <option value="0" selected>Selecione...</option>
                                 @foreach($arbritos as $arbrito)
