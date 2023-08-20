@@ -30,21 +30,21 @@ if (!function_exists('getFormato')) {
 if (!function_exists('validaCPF')) {
  
 function validaCPF($cpf) { 
-    // Verifica se o número foi informado
+    // Verifica  se ha numero
     if(empty($cpf)) {
         return false;
     }
  
-    // Elimina possível máscara
+    // Elimina  máscara
     $cpf = preg_replace('/[^0-9]/', '', $cpf);
     $cpf = str_pad($cpf, 11, '0', STR_PAD_LEFT);
      
-    // Verifica se o número de dígitos informados é igual a 11
+    // Verifica se a qnt é igual a 11
     if (strlen($cpf) != 11) {
         return false;
     }
-    // Verifica se nenhuma das sequências inválidas abaixo
-    // foi digitada. Caso afirmativo, retorna falso
+    // Verifica  sequências inválidas 
+    
     else if ($cpf == '00000000000' || 
         $cpf == '11111111111' || 
         $cpf == '22222222222' || 
@@ -56,8 +56,7 @@ function validaCPF($cpf) {
         $cpf == '88888888888' || 
         $cpf == '99999999999') {
         return false;
-     // Calcula os dígitos verificadores para verificar se o
-     // CPF é válido
+     // Calcula os dígitos verificadores 
      } else {   
          
         for ($t = 9; $t < 11; $t++) {
